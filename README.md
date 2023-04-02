@@ -20,6 +20,29 @@ PS C:\Windows\System32> npm -v
 
 Ensure that version number is displayed. If not node or npm might not be installed/configured properly on your PC.
 
+# Pointers on working example:
+
+Helpful links: 
+https://www.youtube.com/watch?v=fPuLnzSjPLE&t=1332s&ab_channel=LamaDev
+
+Config problems encountered: 
+client -> package.json lines 17 & 18
+
+```
+"start": "react-scripts --openssl-legacy-provider start",
+"build": "react-scripts --openssl-legacy-provider build",
+```
+
+fixed to resolve openssl issues
+
+backend -> package.json lines 6
+
+```
+"type": "module",
+```
+
+required when using import
+
 # Git guide
 
 ### Addition of Feature/Bug fix
