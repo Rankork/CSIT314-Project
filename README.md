@@ -22,6 +22,8 @@ Ensure that version number is displayed. If not node or npm might not be install
 
 # Pointers on working example:
 
+*Disclaimer*: The working example only runs on correctly configured/installed MERN (MySQL) stack, it is not a guarantee that it will run on any PC. The code may be correct but may not run due to configuration errors.
+
 Helpful links: 
 https://www.youtube.com/watch?v=fPuLnzSjPLE&t=1332s&ab_channel=LamaDev
 
