@@ -1,6 +1,25 @@
 # CSIT314
 CSIT314 Project 2023
 
+# React guide
+
+1. npx create-react-app "proj-name"
+2. cd "proj-name"
+3. npm start
+
+### Troubleshooting guide
+
+From Powershell
+
+```
+PS C:\Windows\System32> node -v
+v18.14.0
+PS C:\Windows\System32> npm -v
+9.6.2
+```
+
+Ensure that version number is displayed. If not node or npm might not be installed/configured properly on your PC.
+
 # Git guide
 
 ### Addition of Feature/Bug fix
