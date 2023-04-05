@@ -1,0 +1,61 @@
+services:
+  frontend:
+    container_name: frontend
+    image: frontend
+    network_mode: host
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/frontend.dockerfile
+      args:
+        PORT: 3000
+    command: npm run start
+    ports:
+      - "3000:3000"
+    # Mount source code into container
+    volumes:
+      - ./client/public:/app/client/public
+      - ./client/src:/app/client/src
+    depends_on:
+      - backend
+
+  backend:
+    container_name: backend
+    image: backend
+    network_mode: host
+    restart: always
+    build:
+      context: .
+      dockerfile: ./docker/backend.dockerfile
+      args:
+        PORT: 8800
+    command: npm start
+    environment:
+      - ENV_FOLDER="${PWD}/env"
+    ports:
+      - "8800:8800"
+    # Mount source code into container
+    volumes:
+      - ./backend/src:/app/backend/src
+      - ./env:/app/env
+    depends_on:
+      - db
+
+  db:
+    container_name: mysql
+    image: mysql:latest
+    restart: always
+    network_mode: host
+    env_file:
+      - ./env/mysql.env
+    ports:
+      - "3306:3306"
+    expose:
+      - "3306"
+    # Mount mysql db data
+    volumes:
+      - tradie_db:/var/lib/mysql
+
+# Create docker volume for MySQL data
+volumes:
+    tradie_db:
