@@ -1,18 +1,22 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Students from "./pages/Students";
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import ClientPage from "./pages/ClientPage";
+import LoginPage from "./pages/LoginPage";
+import ProfessionalPage from "./pages/ProfessionalPage";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <BrowserRouter>
-      <Routes>
-          <Route path="/" element={<Students />} />
-      </Routes>
-      </BrowserRouter>
+    <div>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<LoginPage />} />
+          <Route exact path="/client" element={<ClientPage />} />
+          <Route exact path="/professional" element={<ProfessionalPage />} />
+        </Routes>
+      </Router>
     </div>
   );
-}
+};
 
 export default App;
