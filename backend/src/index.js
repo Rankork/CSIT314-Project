@@ -17,7 +17,8 @@ app.use(Express.json())
 
 // -------------- Database Connection -------------------------
 // Database Details for connection string
-const db = mysql.createPool({
+// Database Details for connection string
+const db = mysql.createConnection({
     connectionLimit: 10,
     waitForConnections: true,
     host: process.env.DB_HOSTNAME,

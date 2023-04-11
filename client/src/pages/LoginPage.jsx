@@ -1,4 +1,5 @@
 //import { useEffect } from "react";
+import React from "react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios"
@@ -19,9 +20,9 @@ const LoginPage = () => {
         password: password,
       }).then((response) => {
          //--------- FOR DEBUG PURPOSES -------------
-         //console.log(response)
-         //console.log(response.data)
-         //console.log(response.data[0].AccountType)
+         console.log(response)
+         console.log(response.data)
+         console.log(response.data[0].AccountType)
 
          //---- LOGIC ----------------
          if(response.data[0].AccountType == "Client")
