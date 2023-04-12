@@ -6,9 +6,9 @@ const ProfessionalPage = () => {
     const handleUserLogout = (e) => {
     try
     {
-      fetch("/api/logout", {
-        method: 'POST',
-        credentials: 'include' 
+      fetch("http://localhost:3000/logout", {
+        method: 'GET',
+        credentials: 'same-origin' 
       });
       navigate("/")
     }

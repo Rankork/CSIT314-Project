@@ -1,4 +1,4 @@
-import Express from "express";
+import Express, { Router } from "express";
 //import mysql2 from "mysql2";
 import mysql from "mysql"
 import cors from "cors";
@@ -54,7 +54,7 @@ app.get("/", (req, res) => { // request and response
 })
 
 // Handle logout
-app.post("/api/logout", (req, res) => {
+app.get("http://localhost:3000/logout", (req, res) => {
     // Session destroy on logout
     req.session.destroy((err) => {
       if (err) {
