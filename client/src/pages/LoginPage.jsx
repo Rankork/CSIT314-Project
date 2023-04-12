@@ -23,19 +23,27 @@ const LoginPage = () => {
          console.log(response)
          console.log(response.data)
          console.log(response.data[0].AccountType)
+         console.log(response.status)
 
          //---- LOGIC ----------------
-         if(response.data[0].AccountType == "Client")
+         if(response.status == 200) // handle with OK HTTP status code 
          {
-             navigate("/client")
-         }
-         else if(response.data[0].AccountType == "Professional")
-         {
-             navigate("/professional")
+            if(response.data[0].AccountType == "Client")
+            {
+                navigate("/client")
+            }
+            else if(response.data[0].AccountType == "Professional")
+            {
+                navigate("/professional")
+            }
+            else
+            {
+                alert("Fatal Error")
+            }
          }
          else
          {
-             alert("Fatal Error")
+             alert("Error with session")
          }
       })
   };
