@@ -2,7 +2,7 @@ services:
   frontend:
     container_name: frontend
     image: frontend
-    network_mode: host
+    # network_mode: host
     restart: always
     build:
       context: .
@@ -22,7 +22,7 @@ services:
   backend:
     container_name: backend
     image: backend
-    network_mode: host
+    # network_mode: host
     restart: always
     build:
       context: .
@@ -45,7 +45,7 @@ services:
     container_name: mysql
     image: mysql:latest
     restart: always
-    network_mode: host
+    # network_mode: host
     env_file:
       - ./env/mysql.env
     ports:
