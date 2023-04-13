@@ -1,4 +1,5 @@
 import React from "react";
+import "./professional-page.css";
 
 const ProfessionalPage = () => {
   return (

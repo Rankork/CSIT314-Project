@@ -1,9 +1,7 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import ClientPage from "./pages/ClientPage";
-import LoginPage from "./pages/LoginPage";
-import ProfessionalPage from "./pages/ProfessionalPage";
+import { ClientPage, LoginPage, ProfessionalPage } from "./pages"; //goes to index.js in './pages'
 
 const App = () => {
   return (

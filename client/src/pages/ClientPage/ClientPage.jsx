@@ -1,4 +1,5 @@
 import React from "react";
+import "./client-page.css";
 
 const ClientPage = () => {
   return (
