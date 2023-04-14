@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import "./login-page.css";
+
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -19,6 +20,16 @@ const LoginPage = () => {
       navigate("/professional");
     }
   };
+
+  useEffect(() => {
+    // Add LoginPage to the body element when mounting
+    document.body.classList.add("loginPage");
+
+    // Remove LoginPage to the body element when un-mounting
+    return () => {
+      document.body.classList.remove("loginPage");
+    };
+  }, []);
 
   return (
     <div className="login">
