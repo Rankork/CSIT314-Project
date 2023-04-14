@@ -1,3 +1,7 @@
+body.loginPage {
+  background: var(--color-bg-gradient);
+}
+
 .login {
   padding: 12px, 20px;
   font-family: var(--font-family);
@@ -46,7 +50,7 @@
   color: white;
 }
 
-.loginpage__login-btn:hover {
+.login-btn:hover {
   opacity: 0.8;
   cursor: pointer;
 }
