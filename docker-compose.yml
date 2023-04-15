@@ -54,7 +54,11 @@ services:
       - "3306"
     # Mount mysql db data
     volumes:
-      - ./DbDump:/var/lib/mysql-files
+      - tradie_db:/var/lib/mysql
+
+# Create docker volume for MySQL data
+volumes:
+    tradie_db:
 
 # Create docker volume for MySQL data
 volumes:

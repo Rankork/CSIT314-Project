@@ -1,6 +1,22 @@
 # CSIT314
 CSIT314 Project 2023
 
+# Running software
+
+Using docker means that you aren't required to install npm, node or MySQL on your machine
+
+1. Make sure docker and docker compose plugin is installed
+2. Enter project root directory
+3. Build docker images
+   ```docker compose build backend```
+   ```docker compose build frontend```
+4. Run docker containers
+   ```docker compose up -d```
+
+Note: Any packages added to package.json, means you need to rebuild images and restart containers
+
+Note: Any code changes will auto-update on frontend/backend
+
 # React guide
 
 1. npx create-react-app "proj-name"

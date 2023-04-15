@@ -23,8 +23,8 @@ app.use(bodyparser.json());
 
 app.use(
     session({
-      key: "userId",
-      secret: "TGlvbiBlbCcgSm9obnNvbg==",
+      key: process.env.SESSION_KEY,
+      secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: true,
       cookie: {
@@ -32,7 +32,7 @@ app.use(
       },
     })
   );
-  
+
 
 // -------------- Database Connection -------------------------
 // Database Details for connection string
@@ -58,7 +58,7 @@ app.get("http://localhost:3000/logout", (req, res) => {
     // Session destroy on logout
     req.session.destroy((err) => {
       if (err) {
-        console.error("Fatal error occured when destroying session", err);
+        console.error("Fatal error occurred when destroying session", err);
         return res.status(500).json({ success: false, message: "Logout failed" });
       }
       else
@@ -66,7 +66,7 @@ app.get("http://localhost:3000/logout", (req, res) => {
         return res.status(200).json({ success: true, message: "Successful logout" });
       }
     });
-  });
+});
 
 // points to users table (LOGIN)
 app.post("/users", (req, res) => {
@@ -93,44 +93,3 @@ app.post("/users", (req, res) => {
 app.listen(process.env.BACKEND_PORT, () => {
     console.log("Backend listening on " + process.env.BACKEND_PORT) // NOTE: prints to console
 })
-
-
-/* ---------------- DEPRECATED CODE ---------------------
-
-const db = mysql.createConnection({
-    connectionLimit: 10,
-    waitForConnections: true,
-    host: process.env.DB_HOSTNAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS, // default password for root is password
-    database: process.env.DB_INTERNAL_DB
-})
-
-// Test MySQL
-/*
-const query_mysql = function (query, cb) {
-    db.getConnection(function (err, connection) {
-        if (err) {
-            cb(err, null);
-        } else {
-                connection.query(query, function (err, rows) {
-                connection.release();
-                cb(err, rows);
-            });
-        }
-    });
-};
-
-// points to students table
-app.get("/students", (req,res) => {
-    const query = "SELECT * FROM students" // R from CRUD
-    query_mysql(query,(err, data) => { // return error and data
-        if(err) {
-            return res.json(err)
-        }
-        else {
-            return res.json(data)
-        }
-    })
-})
-*/
