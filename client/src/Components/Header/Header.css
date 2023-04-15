@@ -1,0 +1,69 @@
+/* The header Div backgound spacing */
+.header{
+    padding: 7px;
+    align-content: space-evenly;
+    background: var(--header-gradient);
+}
+
+/* Logo and account image -> Resizing image */
+img{
+    width: 50px;
+    height: 50px;
+}
+
+/* Logo table spacing in header div */
+.logo{
+    width: 80px;
+    text-align: left;
+}
+
+/* Home Button table alligmnet */
+.home{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+/* Membership Button table alligmnet */
+.membership{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+
+/* pay-on-demand Button table alligmnet*/
+.payondemand{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+
+/* More Button table alligmnet */
+.more{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+
+/* Accout image allignment */
+.account{
+    float: right;
+    vertical-align: middle;
+}
+
+/* list styling */
+ul{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+  }
+
+/* styling the <a> (link) tags */  
+  li a {
+    color: white;
+    font-size: large;
+    text-align: center;
+    text-decoration: none;
+  }

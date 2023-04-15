@@ -1,0 +1,64 @@
+/* styling the footer tags */  
+.footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    bottom: 0;
+    padding: 5px;
+    align-content: space-evenly;
+    background: var(--footer-gradient);
+    width: 100%;
+}
+
+.CopyRight{
+    float: left;
+    padding:10px 10px 20px;
+}
+
+.Privacy{
+    float: left;
+    padding-left:70px;
+    padding-top: 10px;
+    padding-bottom: 20px;
+   
+}
+
+.terms{
+    float: left;
+    text-align: left;
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+
+.support{
+    float: left;
+    padding:10px 10px 20px;
+}
+
+.line{
+    float: left;
+    padding:10px 10px 20px;
+}
+
+.Contact{
+    padding:10px 10px 20px;
+}
+
+
+/* list styling */
+ul{
+    list-style-type: none;
+    overflow: hidden;
+}
+
+
+
+/* styling the <a> (link) tags */  
+li a {
+    color: white;
+    font-size: large;
+    text-align: center;
+    text-decoration: none;
+  }
