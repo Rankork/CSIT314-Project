@@ -11,8 +11,10 @@ const Header = () => {
             <li className="logo"><img src={Logo} alt="logo" id="logoimg" /></li>
             <li className="home"><a href="#home">Home</a></li>
             <li className="membership"><a href="#membership">Membership</a></li>  
-            <li className="payondemand"><a href="#payOnDamand">Pay-on-Demand </a></li>
-            <li className="more"> <a href="#more">More</a></li>
+            <li className="taskAllocation"><a href="#taskallocation">Task Allocation</a></li>
+            <li className="selection"> <a href="#selection">Selection</a></li>
+            <li className="rating"><a href="#rating">Rating</a></li>
+            <li className="report"><a href="#report">Report</a></li>
             <li className="account"> <a href="#account"><img src={Img1} alt="img1" id="img1"/></a></li>
           </ul>
         </div>

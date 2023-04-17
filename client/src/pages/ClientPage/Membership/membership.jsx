@@ -1,5 +1,5 @@
 import React from "react";
-import "./client-page.css";
+import "./membership.css";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
 
