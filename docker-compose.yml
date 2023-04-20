@@ -59,7 +59,3 @@ services:
 # Create docker volume for MySQL data
 volumes:
     tradie_db:
-
-# Create docker volume for MySQL data
-volumes:
-    tradie_db:
