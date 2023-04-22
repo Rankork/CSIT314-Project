@@ -3,6 +3,7 @@ import "./professional-page.css";
 import { useNavigate } from "react-router-dom"
 
 const ProfessionalPage = () => {
+
   const navigate = useNavigate();
   const handleUserLogout = (e) => {
   try
@@ -22,6 +23,8 @@ const ProfessionalPage = () => {
   return (
     <div>
       <h1>Welcome, Professional</h1>
+      <br></br>
+      <button onClick={handleUserLogout}>Logout</button>
     </div>
   );
 };

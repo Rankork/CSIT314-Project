@@ -48,6 +48,7 @@ img{
 .account{
     float: right;
     vertical-align: middle;
+    margin-right: 20px; /* Min -> make more space on the right */
 }
 
 /* list styling */
@@ -67,3 +68,24 @@ li {
     text-align: center;
     text-decoration: none;
   }
+
+/* Min -> For logout */
+ul.dropdown {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 120px;
+}
+  
+li.account:hover ul.dropdown {
+    display: block;
+}
+  
+ul.dropdown button {
+    padding: 5px;
+    display: block;
+    background-color: white;
+    border: none;
+    font-family: "Actor";
+    font-size: 15px;
+}

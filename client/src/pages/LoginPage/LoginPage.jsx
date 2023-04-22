@@ -19,11 +19,12 @@ const LoginPage = () => {
       email: email,
       password: password,
     }).then((response) => {
+      
        //--------- FOR DEBUG PURPOSES -------------
-       console.log(response)
-       console.log(response.data)
-       console.log(response.data[0].AccountType)
-       console.log(response.status)
+       //console.log(response)
+       //console.log(response.data)
+       //console.log(response.data[0].AccountType)
+       //console.log(response.status)
 
        //---- LOGIC ----------------
        if(response.status == 200) // handle with OK HTTP status code 
