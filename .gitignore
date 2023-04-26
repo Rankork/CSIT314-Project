@@ -4,4 +4,10 @@
 node_modules/**
 package-lock.json
 package.json
+<<<<<<< Updated upstream
 */.DS_Store
+=======
+backend/package-lock.json
+backend/node_modules/.package-lock.json
+docker-compose.yml
+>>>>>>> Stashed changes
