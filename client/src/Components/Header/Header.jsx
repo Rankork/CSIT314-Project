@@ -7,18 +7,31 @@ import { Routes, Route, Link } from "react-router-dom";
 import  Membership from "../../pages/ClientPage/Membership/Membership";
 
 const Header = () => {
+
+  const navigate = useNavigate();
+  const handleUserLogout = (e) => {
+      try
+      {
+        fetch("http://localhost:3000/logout", {
+          method: 'GET',
+          credentials: 'same-origin' 
+        });
+        navigate("/")
+      }
+      catch(error)
+      {
+        console.error('Error on Logout', error)
+      }
+  }
+
     return (
         <div className="header">
           <ul>
             <li className="logo"><img src={Logo} alt="logo" id="logoimg" /></li>
             <li className="home"><a href="#home">Home</a></li>
-            <li className="membership"><a href="#membership">Membership</a></li>  
+            <li className="membership"><Link to="member">Membership</Link></li>  
             <li className="payondemand"><a href="#payOnDamand">Pay-on-Demand </a></li>
             <li className="more"> <a href="#more">More</a></li>
-            <li className="account"> <a href="#account"><img src={Img1} alt="img1" id="img1"/></a></li>
-            <li className="membership"><Link to="member">Membership</Link></li>  
-            <li className="payondemand"><a href="#payOnDemand">Pay-on-Demand </a></li>
-            <li className="more"><a href="#more">More</a></li>
             <li className="account"><a href="#account"><img src={Img1} alt="img1" id="img1"/></a>
               <ul className="dropdown">
                 <button className="logout" onClick={handleUserLogout}><a href=""></a>Logout</button>
@@ -33,6 +46,6 @@ const Header = () => {
     );
 };
 
-    export default Header;
+export default Header;
 
 

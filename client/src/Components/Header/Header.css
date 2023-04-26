@@ -61,9 +61,27 @@ li {
   }
 
 /* styling the <a> (link) tags */  
-  li a {
-    color: white;
-    font-size: large;
-    text-align: center;
-    text-decoration: none;
-  }
+li a {
+   color: white;
+   font-size: large;
+   text-align: center;
+   text-decoration: none;
+}
+
+/*Added css for logout dropdown*/
+.dropdown {
+    display: none;
+    position: absolute;
+}
+  
+.account:hover .dropdown {
+    display: block;
+}
+
+.account .dropdown .logout {
+    color: black;
+    background-color: white;
+    border: none;
+    font-size: 16px;
+    font-family: var(--font-family);
+}
