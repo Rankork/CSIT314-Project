@@ -6,6 +6,7 @@ import dotenv from "dotenv";
 import path from "path";
 import bodyparser from "body-parser"
 import session from "express-session"
+import seedrandom from "seedrandom"
 
 const env_file = path.join(process.cwd(), "../", "env/", "backend.env");
 console.log("ENV File: " + env_file.toString());
@@ -35,7 +36,6 @@ app.use(
 
 
 // -------------- Database Connection -------------------------
-// Database Details for connection string
 // Database Details for connection string
 const db = mysql.createConnection({
     connectionLimit: 10,
@@ -68,7 +68,7 @@ app.get("http://localhost:3000/logout", (req, res) => {
     });
 });
 
-// points to users table (LOGIN)
+// points to users table (LOGIN functionality)
 app.post("/users", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -78,7 +78,7 @@ app.post("/users", (req, res) => {
                 //req.setEncoding({err: err});
             }else{
                 if(result.length > 0){
-                    req.session.loggedIn = true
+                    //req.session.userId = result[0].Id;
                     res.status(200).send(result) // handle with OK HTTP status code 
                     //res.json({ success: true, data: result });
                 }
@@ -88,6 +88,30 @@ app.post("/users", (req, res) => {
             }
         }
     )
+})
+
+// change user id to fit figma prototype
+let seedVal = Math.floor(Math.random() * (999999999 - 1 + 1)) + 1;
+let range = seedrandom(seedVal);
+
+// Test insert 
+app.post("/users/new", (req, res) => {
+  const id = Math.floor(range() * (999999999 - 100000000 + 1)) + 100000000;
+  const name = req.body.name;
+  const email = req.body.email;
+  const password = req.body.password;
+  
+  db.query("INSERT INTO users (Id, Name, Email, Password) VALUES (?, ?, ?, ?)", [id, name, email, password], 
+      (err, result) => {
+          if(err){
+              console.log(err);
+              res.status(500).send({message: "Fatal error: Insert operation failed"});
+          } else {
+              console.log("New user inserted:", name, email);
+              res.status(200).send({message: "Data successfully inserted"});
+          }
+      }
+  )
 })
 
 app.listen(process.env.BACKEND_PORT, () => {
