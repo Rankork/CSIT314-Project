@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-<<<<<<< Updated upstream
-=======
 import Axios from "axios";
 import { Routes, Route, Link } from "react-router-dom";
 import Register from "../Register/Register"; // Min -> routes for register
->>>>>>> Stashed changes
 import "./login-page.css";
 
 
@@ -19,14 +16,6 @@ const LoginPage = () => {
 
     // TODO : UPDATE LOGIC
     // SQL query to check email and passwords will go here !
-<<<<<<< Updated upstream
-    const isClient = true;
-    if (isClient) {
-      navigate("/client");
-    } else {
-      navigate("/professional");
-    }
-=======
     Axios.post("http://localhost:8800/users", {
       email: email,
       password: password,
@@ -62,7 +51,6 @@ const LoginPage = () => {
            alert("Error with session")
        }
     })
->>>>>>> Stashed changes
   };
 
   useEffect(() => {
