@@ -4,18 +4,12 @@ import Logo from "../../Images/logo.png";
 import Img1 from "../../Images/user.png";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-<<<<<<< Updated upstream
-
-
-const ClientPage = () => {
-=======
 import { useLocation } from "react-router-dom";
 
 const ClientPage = () => {
   const location = useLocation();
   const userId = location.state.userId;
 
->>>>>>> Stashed changes
   return (
     <div>
       {/* Div for whole Page*/}
@@ -27,7 +21,7 @@ const ClientPage = () => {
         </div>
       
       {/* Div for body of page*/}
-      <div className="Cleint">
+      <div className="Client">
         <h1>Welcome, Client</h1>
         <p>You are logged in, your user ID is: {userId}</p>
       </div>
