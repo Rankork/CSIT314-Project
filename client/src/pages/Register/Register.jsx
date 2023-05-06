@@ -10,11 +10,19 @@ const Register = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [cfmpassword, setcfmPassword] = useState("");
-  const [name, setName] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [phonenumber, setPhonenumber] = useState("");
+  const [accountType, setAccountType] = useState("");
+
+  const handleSelectionChange = (event) => {
+    setAccountType(event.target.value);
+  };
 
   const handleSubmit = (event) => {
 
     event.preventDefault(); 
+    const regexphone = /^[0-9]{9}$/;
   
     if(password != cfmpassword)
     {
@@ -24,17 +32,26 @@ const Register = () => {
     {
        alert("Email required");
     }
-    if(name.trim().length == 0)
+    if(!regexphone.test(phonenumber))
     {
-       alert("Name required");
+       alert("Phone number must be 9 digits");
+    }
+    if(firstname.trim().length == 0)
+    {
+       alert("First Name required");
+    }
+    if(lastname.trim().length == 0)
+    {
+       alert("Last Name required");
     }
     else
     {
-        // redirect to login page 
         Axios.post("http://localhost:8800/users/new", {
           email: email,
           password: password,
-          name: name
+          firstname: firstname,
+          lastname: lastname,
+          phonenumber: phonenumber
         })
         .then((response) => {
           console.log(response);
@@ -45,7 +62,6 @@ const Register = () => {
           alert("Insert Failed");
         });
     }
-  
   };
 
   useEffect(() => {
@@ -64,13 +80,23 @@ const Register = () => {
         <h1>Register</h1>
         <form onSubmit={handleSubmit}>
          <form>
-            <label for="Name">Name</label>
+            <label for="First_Name">First Name</label>
             <input
               className="register__input"
               type="text"
-              placeholder="Brandon Terryson"
-              value={name}
-              onChange={(event) => setName(event.target.value)}
+              placeholder="Brandon"
+              value={firstname}
+              onChange={(event) => setFirstname(event.target.value)}
+            />
+          </form>
+          <form>
+            <label for="Last_Name">Last Name</label>
+            <input
+              className="register__input"
+              type="text"
+              placeholder="BaleWood"
+              value={lastname}
+              onChange={(event) => setLastname(event.target.value)}
             />
           </form>
           <form>
@@ -81,6 +107,16 @@ const Register = () => {
               placeholder="example@email.com"
               value={email}
               onChange={(event) => setEmail(event.target.value)}
+            />
+          </form>
+          <form>
+            <label for="phonenumber">Phone Number</label>
+            <input
+              className="register__input"
+              type="number"
+              placeholder="895458657"
+              value={phonenumber}
+              onChange={(event) => setPhonenumber(event.target.value)}
             />
           </form>
           <form>
@@ -102,6 +138,16 @@ const Register = () => {
               value={cfmpassword}
               onChange={(event) => setcfmPassword(event.target.value)}
             />
+          </form>
+          <form id="radbutton">
+            <label for="Acc_Type">Account Type</label>
+            <br/>
+            <br/>
+            <select id="AccountType" name="AccountType" onChange={handleSelectionChange} value={accountType}> 
+            {/*Do we want this? Professionals might be unqualified and frauds in the system*/}
+              <option value="Client">Client</option>
+              <option value="Professional">Professional</option>
+            </select>
           </form>
           <button className="register-btn" type="submit">Sign Up</button>
         </form>

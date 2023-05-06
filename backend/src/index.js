@@ -97,17 +97,18 @@ let range = seedrandom(seedVal);
 // Test insert (Register)
 app.post("/users/new", (req, res) => {
   const id = Math.floor(range() * (999999999 - 100000000 + 1)) + 100000000;
-  const name = req.body.name;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const phonenumber = req.body.phonenumber
   const email = req.body.email;
   const password = req.body.password;
-  
-  db.query("INSERT INTO users (Id, Name, Email, Password) VALUES (?, ?, ?, ?)", [id, name, email, password], 
+  db.query("INSERT INTO users (Id, First_Name, Last_Name, Phone_number, Email, Password) VALUES (?, ?, ?, ?, ?, ?)", [id, firstname, lastname, phonenumber, email, password], 
       (err, result) => {
           if(err){
               console.log(err);
               res.status(500).send({message: "Fatal error: Insert operation failed"});
           } else {
-              console.log("New user inserted:", name, email);
+              console.log("New user inserted:", firstname, lastname, email);
               res.status(200).send({message: "Data successfully inserted"});
           }
       }
