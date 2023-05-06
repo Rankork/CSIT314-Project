@@ -1,0 +1,137 @@
+.page {
+  font-family: var(--font-family);
+  padding-top: 62px;
+}
+
+.Cleint {
+  padding-top: 15px;
+}
+
+/* Table Header -> For Enter Deatils */
+.enterDetails {
+  padding: 15px;
+  text-align: left;
+}
+
+/* Div -> For enter Deatils */
+.register {
+  border-radius: 10px;
+  background: #e9e9e9;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Title -> For Enter Deatils */
+.title {
+  text-align: left;
+  padding-bottom: 10px;
+}
+
+/* Text Box -> For Enter Deatils */
+input[type="text"] {
+  width: 400px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  text-align: left;
+  box-shadow: 0px 4px 8px 0 rgba(0, 0, 0, 0.2);
+  padding-left: 10px;
+  font-family: var(--font-family);
+}
+
+input:focus {
+  outline: none;
+}
+
+/* Label "Fist Name" -> For Enter Deatils */
+.Fname {
+  float: left;
+  padding-bottom: 5px;
+}
+
+/* Label spacing for other labels-> For Enter Deatils */
+.label2 {
+  float: left;
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+/* Div -> for Membership Selection  */
+.mship {
+  border-radius: 10px;
+  background: #e9e9e9;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 420px;
+  height: 100px;
+}
+
+/* Radio button -> For Memebership Selection  */
+.radbut {
+  float: left;
+}
+
+/* Radio button -> For Memebership Selection  */
+input[type="radio"] {
+  margin-left: 15px;
+}
+
+/* Table Header Spacing -> For Memebership Selection  */
+.selectMemberType {
+  vertical-align: top;
+  padding-left: 20px;
+  padding-top: 14px;
+}
+
+/* Div -> For Enter Card Deatils  */
+.cardDeatils {
+  border-radius: 10px;
+  background: #e9e9e9;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  width: 420px;
+  height: 250px;
+}
+
+/* Submit/Next Page Button */
+input[type="submit"] {
+  background: #4285f4;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  left: 1518px;
+  float: right;
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+}
+
+/* Submit Button */
+.submitButton {
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Button {
+  padding-top: 15px;
+}

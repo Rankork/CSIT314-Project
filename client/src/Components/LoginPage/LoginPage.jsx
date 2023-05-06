@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import Axios from "axios";
 import "./login-page.css";
-
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,12 +13,30 @@ const LoginPage = () => {
 
     // TODO : UPDATE LOGIC
     // SQL query to check email and passwords will go here !
-    const isClient = true;
-    if (isClient) {
-      navigate("/client");
-    } else {
-      navigate("/professional");
-    }
+    Axios.post("http://localhost:8800/users", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      //--------- FOR DEBUG PURPOSES -------------
+      //console.log(response)
+      //console.log(response.data)
+      //console.log(response.data[0].AccountType)
+      //console.log(response.status)
+
+      //---- LOGIC ----------------
+      if (response.status == 200) {
+        // handle with OK HTTP status code
+        if (response.data[0].AccountType == "Client") {
+          navigate("/client");
+        } else if (response.data[0].AccountType == "Professional") {
+          navigate("/professional");
+        } else {
+          alert("Fatal Error");
+        }
+      } else {
+        alert("Error with session");
+      }
+    });
   };
 
   useEffect(() => {

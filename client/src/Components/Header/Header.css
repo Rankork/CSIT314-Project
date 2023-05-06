@@ -1,81 +1,83 @@
 /* The header Div backgound spacing */
-.header{
-    padding: 7px;
-    align-content: space-evenly;
-    background: var(--header-gradient);
+.header {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  height: 62px;
+  padding: 7px;
+  align-content: space-evenly;
+  background: var(--header-gradient);
 }
 
 /* Logo and account image -> Resizing image */
-img{
-    width: 50px;
-    height: 50px;
+img {
+  width: 50px;
+  height: 50px;
 }
 
 /* Logo table spacing in header div */
-.logo{
-    width: 80px;
-    text-align: left;
+.logo {
+  width: 80px;
+  text-align: left;
 }
 
 /* Home Button table alligmnet */
-.home{
-    padding: 14px 14px;
-    vertical-align: middle;
+.home {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
 
 /* Membership Button table alligmnet */
-.membership{
-    padding: 14px 14px;
-    vertical-align: middle;
+.membership {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
-
 
 /* Task Allocation Button table alligmnet*/
-.taskAllocation{
-    padding: 14px 14px;
-    vertical-align: middle;
+.taskAllocation {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
 
-
 /* Selection Button table alligmnet */
-.selection{
-    padding: 14px 14px;
-    vertical-align: middle;
+.selection {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
 
 /* Rating Button table alligmnet */
-.rating{
-    padding: 14px 14px;
-    vertical-align: middle;
+.rating {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
 
 /* Report Button table alligmnet */
-.report{
-    padding: 14px 14px;
-    vertical-align: middle;
+.report {
+  padding: 14px 14px;
+  vertical-align: middle;
 }
 
-
 /* Accout image allignment */
-.account{
-    float: right;
-    vertical-align: middle;
+.account {
+  float: right;
+  vertical-align: middle;
 }
 
 /* list styling */
-ul{
-    list-style-type: none;
-    overflow: hidden;
+ul {
+  list-style-type: none;
+  overflow: hidden;
 }
 
 li {
-    float: left;
-  }
+  float: left;
+}
 
-/* styling the <a> (link) tags */  
-  li a {
-    color: white;
-    font-size: large;
-    text-align: center;
-    text-decoration: none;
-  }
+/* styling the <a> (link) tags */
+li a {
+  color: white;
+  font-size: large;
+  text-align: center;
+  text-decoration: none;
+}
