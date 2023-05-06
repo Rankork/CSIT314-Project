@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import "./login-page.css";
-import "../../user.js";
+
 import user from "../../user.js";
 
 const LoginPage = () => {
@@ -42,9 +42,9 @@ const LoginPage = () => {
         */
 
         // handle with OK HTTP status code
-        if (user.accountType === "Client") {
+        if (user.accountType == "Client") {
           navigate("/client");
-        } else if (user.accountType === "Professional") {
+        } else if (user.accountType == "Professional") {
           navigate("/professional");
         } else {
           alert("Fatal Error");

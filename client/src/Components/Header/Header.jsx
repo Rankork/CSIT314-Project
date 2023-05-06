@@ -1,20 +1,18 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Logo from "../../Images/logo.png";
 import Img1 from "../../Images/user.png";
 import "./Header.css";
+import user from "../../user.js";
 
 const Header = () => {
-  const logedInUserPath = useLocation();
-  const isClient = logedInUserPath.pathname.startsWith("/client");
-  const isProfessional = logedInUserPath.pathname.startsWith("/professional");
+  let isClient = false;
+  let isProfessional = false;
 
-  var location = "";
-
-  if (accountType === "Client") {
-    location = "/client";
-  } else if (accountType === "Professional") {
-    location = "/professional";
+  if (user.accountType === "Client") {
+    isClient = true;
+  } else if (user.accountType === "Professional") {
+    isProfessional = true;
   }
 
   return (
@@ -24,28 +22,62 @@ const Header = () => {
           <img src={Logo} alt="logo" id="logoimg" />
         </li>
         <li className="home">
-          <Link to={location}>Home</Link>
+          <Link to={isClient === true ? "/client" : "/professional"}>Home</Link>
         </li>
         <li className="membership">
-          <Link to={location + "/membership"}></Link>
-          <a href="/membership">Membership</a>
+          <Link
+            to={
+              isClient === true
+                ? "/client/membership"
+                : "/professional/membership"
+            }
+          >
+            Membership
+          </Link>
         </li>
         <li className="taskAllocation">
-          <a href="#taskallocation">Task Allocation</a>
+          <Link
+            to={
+              isClient === true
+                ? "/client/taskAllocation"
+                : "/professional/taskAllocation"
+            }
+          >
+            Task Allocation
+          </Link>
         </li>
         <li className="selection">
-          {" "}
-          <a href="#selection">Selection</a>
+          <Link
+            to={
+              isClient === true
+                ? "/client/selection"
+                : "/professional/selection"
+            }
+          >
+            Selection
+          </Link>
         </li>
         <li className="rating">
-          <a href="#rating">Rating</a>
+          <Link
+            to={isClient === true ? "/client/rating" : "/professional/rating"}
+          >
+            Rating
+          </Link>
         </li>
         <li className="report">
-          <a href="#report">Report</a>
+          <Link
+            to={isClient === true ? "/client/report" : "/professional/report"}
+          >
+            Report
+          </Link>
         </li>
         <li className="account">
           {" "}
-          <a href="#account">
+          <a
+            href={
+              isClient === true ? "/client/account" : "/professional/account"
+            }
+          >
             <img src={Img1} alt="img1" id="img1" />
           </a>
         </li>
