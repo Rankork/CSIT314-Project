@@ -30,15 +30,27 @@ img{
 }
 
 
-/* pay-on-demand Button table alligmnet*/
-.payondemand{
+/* Task Allocation Button table alligmnet*/
+.taskAllocation{
     padding: 14px 14px;
     vertical-align: middle;
 }
 
 
-/* More Button table alligmnet */
-.more{
+/* Selection Button table alligmnet */
+.selection{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+/* Rating Button table alligmnet */
+.rating{
+    padding: 14px 14px;
+    vertical-align: middle;
+}
+
+/* Report Button table alligmnet */
+.report{
     padding: 14px 14px;
     vertical-align: middle;
 }
