@@ -1,9 +1,22 @@
 import React from "react";
+import { Link, useLocation } from "react-router-dom";
 import Logo from "../../Images/logo.png";
 import Img1 from "../../Images/user.png";
 import "./Header.css";
 
 const Header = () => {
+  const logedInUserPath = useLocation();
+  const isClient = logedInUserPath.pathname.startsWith("/client");
+  const isProfessional = logedInUserPath.pathname.startsWith("/professional");
+
+  var location = "";
+
+  if (accountType === "Client") {
+    location = "/client";
+  } else if (accountType === "Professional") {
+    location = "/professional";
+  }
+
   return (
     <div className="header">
       <ul>
@@ -11,9 +24,10 @@ const Header = () => {
           <img src={Logo} alt="logo" id="logoimg" />
         </li>
         <li className="home">
-          <a href="/home">Home</a>
+          <Link to={location}>Home</Link>
         </li>
         <li className="membership">
+          <Link to={location + "/membership"}></Link>
           <a href="/membership">Membership</a>
         </li>
         <li className="taskAllocation">

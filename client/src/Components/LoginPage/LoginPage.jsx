@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
 import "./login-page.css";
+import "../../user.js";
+import user from "../../user.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -11,8 +13,7 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // TODO : UPDATE LOGIC
-    // SQL query to check email and passwords will go here !
+    // SQL query to check email and passwords
     Axios.post("http://localhost:8800/users", {
       email: email,
       password: password,
@@ -24,11 +25,26 @@ const LoginPage = () => {
       //console.log(response.status)
 
       //---- LOGIC ----------------
-      if (response.status == 200) {
+      if (response.status === 200) {
+        /// Updating the global user var
+        user.accountType = response.data[0].AccountType;
+
+        /*
+        TODO: 
+         * Update all of the params in user such as:
+             - user.location = ...
+             - user.fistName = ...
+             - user.lastName = ...
+            ect...
+        
+        Note user var is located in user.js file, this is so
+        that user var can be used in any location in the file.
+        */
+
         // handle with OK HTTP status code
-        if (response.data[0].AccountType == "Client") {
+        if (user.accountType === "Client") {
           navigate("/client");
-        } else if (response.data[0].AccountType == "Professional") {
+        } else if (user.accountType === "Professional") {
           navigate("/professional");
         } else {
           alert("Fatal Error");

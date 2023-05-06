@@ -75,7 +75,7 @@ li {
 }
 
 /* styling the <a> (link) tags */
-li a {
+li Link {
   color: white;
   font-size: large;
   text-align: center;
