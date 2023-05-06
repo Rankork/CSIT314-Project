@@ -10,6 +10,7 @@ const Header = () => {
 
   const navigate = useNavigate();
   const handleUserLogout = (e) => {
+      localStorage.clear(); // clear associated value/variables associated to a login session
       try
       {
         fetch("http://localhost:3000/logout", {

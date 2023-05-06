@@ -33,11 +33,13 @@ const LoginPage = () => {
        {
           if(response.data[0].AccountType == "Client")
           {
-              navigate("/client",  {state:{ userId: response.data[0].Id }}) // Handle bringing relevant data over to next page
+              localStorage.setItem('userId', response.data[0].Id)
+              navigate("/client") // Handle bringing relevant data over to next page
           }
           else if(response.data[0].AccountType == "Professional")
           {
-              navigate("/professional", {state:{ userId: response.data[0].Id }})
+              localStorage.setItem('userId', response.data[0].Id)
+              navigate("/professional")
           }
           else
           {

@@ -4,11 +4,9 @@ import Logo from "../../Images/logo.png";
 import Img1 from "../../Images/user.png";
 import Header from "../../Components/Header/Header";
 import Footer from "../../Components/Footer/Footer";
-import { useLocation } from "react-router-dom";
 
 const ClientPage = () => {
-  const location = useLocation();
-  const userId = location.state.userId;
+  const userId = localStorage.getItem('userId');
 
   return (
     <div>

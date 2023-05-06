@@ -94,7 +94,7 @@ app.post("/users", (req, res) => {
 let seedVal = Math.floor(Math.random() * (999999999 - 1 + 1)) + 1;
 let range = seedrandom(seedVal);
 
-// Test insert 
+// Test insert (Register)
 app.post("/users/new", (req, res) => {
   const id = Math.floor(range() * (999999999 - 100000000 + 1)) + 100000000;
   const name = req.body.name;
@@ -113,6 +113,24 @@ app.post("/users/new", (req, res) => {
       }
   )
 })
+
+// For payment 
+app.post("/payment", (req, res) => {
+    const cardNo = req.body.cardNo;
+    console.log(req.body.membershipType); // Testing --> need to handle insertion into multiple tables for membership payment
+    const id = req.body.userId;
+    db.query("INSERT INTO payment (PaymentAmount, PaymentType, CardNo, userId) VALUES (?, ?, ?, ?)", [50, "Membership subscription payment", cardNo, id], 
+        (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(500).send({message: "Fatal error: Insert operation failed"});
+            } else {
+                console.log("New Payment made");
+                res.status(200).send({message: "Data successfully inserted"});
+            }
+        }
+    )
+  })
 
 app.listen(process.env.BACKEND_PORT, () => {
     console.log("Backend listening on " + process.env.BACKEND_PORT) // NOTE: prints to console

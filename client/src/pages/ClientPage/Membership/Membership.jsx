@@ -3,10 +3,20 @@ import "./membership.css";
 import { useState } from "react";
 import Header from "../../../Components/Header/Header";
 import Footer from "../../../Components/Footer/Footer";
+import Axios from "axios"
 
 const Membership = () => {
   const [cardNo, setCardNo] = useState("");
   const [cvc, setCVC] = useState("");
+  const [membershipType, setMembershipType] = useState("");
+
+  // For debugging purposes
+  // console.log(localStorage.getItem('userId'))
+
+  const handleSelectionChange = (event) => {
+    setMembershipType(event.target.value);
+  };
+
   const handleSubmit = (event) => {
 
     event.preventDefault(); 
@@ -22,11 +32,25 @@ const Membership = () => {
     }
     if(!regexcvc.test(cvc))
     {
-      alert("CVC is invalid");
+       alert("CVC is invalid");
     }
     else
     {
       // handle insert with axios
+      Axios.post("http://localhost:8800/payment", {
+        cardNo: cardNo,
+        cvc: cvc,
+        userId: localStorage.getItem('userId'),
+        membershipType: membershipType
+      })
+      .then((response) => {
+        console.log(response);
+        alert("Data Inserted Successfully");
+      })
+      .catch((error) => {
+        console.log(error);
+        alert("Insert Failed");
+      });
     }
     
   
@@ -89,7 +113,7 @@ const Membership = () => {
 
                         {/* Radio Button for Membership Subscription */}
                         <div className="radbut">
-                          <input type="radio" id="memberSub" name="membershipType"/>
+                          <input type="radio" id="memberSub" name="membershipType" onChange={handleSelectionChange}/>
                           <label for="subscription"> Membership Subscription </label> 
                         </div>
 
@@ -97,8 +121,8 @@ const Membership = () => {
 
                         {/* Radio Button for Pay- On-Demand  */}
                         <div className="radbut">
-                          <input type="radio" id="payOnDemand" name="membershipType" />
-                          <label for="payOnDemand" className="memLabel"> Pay-On-Demand  </label>
+                          <input type="radio" id="payOnDemand" name="membershipType" onChange={handleSelectionChange}/>
+                          <label for="payOnDemand" className="memLabel"> Pay-On-Demand </label>
                         </div>
 
                       </form>
