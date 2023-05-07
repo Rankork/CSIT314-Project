@@ -1,12 +1,12 @@
 import Express, { Router } from "express";
 //import mysql2 from "mysql2";
-import mysql from "mysql"
+import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
-import bodyparser from "body-parser"
-import session from "express-session"
-import seedrandom from "seedrandom"
+import bodyparser from "body-parser";
+import session from "express-session";
+import seedrandom from "seedrandom";
 
 const env_file = path.join(process.cwd(), "../", "env/", "backend.env");
 console.log("ENV File: " + env_file.toString());
@@ -116,11 +116,48 @@ app.post("/users/new", (req, res) => {
 })
 
 // For payment 
-app.post("/payment", (req, res) => {
+app.post("/moredetails", (req, res) => {
     const cardNo = req.body.cardNo;
     console.log(req.body.membershipType); // Testing --> need to handle insertion into multiple tables for membership payment
+    const memType = req.body.membershipType;
     const id = req.body.userId;
-    db.query("INSERT INTO payment (PaymentAmount, PaymentType, CardNo, userId) VALUES (?, ?, ?, ?)", [50, "Membership subscription payment", cardNo, id], 
+    const cardExp = req.body.cardexpiry;
+    const Address = req.body.address;
+    const Suburb = req.body.suburb;
+    const Postcode = req.body.postcode;
+
+    let fulladdr = Address + " " + Suburb + " " + Postcode;
+    const gmapapikey = 'AIzaSyBRdpTXnCN8L9AG-iK53EjhmLRLxpXjAqk';
+    const gmapapiURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(fulladdr)}&key=${gmapapikey}`;
+
+    fetch(gmapapiURL)
+        .then(response => response.json())
+        .then(data => {
+            const location = data.results[0].geometry.location;
+            const latitude = location.lat;
+            const longitude = location.lng;
+            console.log(latitude);
+            console.log(longitude);
+
+            // Address Table
+            db.query("INSERT INTO address (Address, Suburb, Postcode, Latitude, Longitude, userid) VALUES (?, ?, ?, ?, ?, ?)", [Address, Suburb, Postcode, latitude, longitude, id], // Handle for lat and long values 
+            (err, result) => {
+                if(err){
+                    console.log(err);
+                    //res.status(500).send({message: "Fatal error: Insert operation failed"}); // Prevent errors (can only send response once)
+                } else {
+                    console.log("New Address provided");
+                    //res.status(200).send({message: "Data successfully inserted"}); // Prevent errors (can only send response once)
+                } 
+            }
+        )
+    })
+    .catch(error => console.error(error));
+
+
+
+    // Payment Table
+    db.query("INSERT INTO payment (PaymentAmount, PaymentType, CardNo, CardExpiry, userId) VALUES (?, ?, ?, ?, ?)", [50, "Membership subscription payment", cardNo, cardExp, id],  // Need to change paymentamount based on Subscription type
         (err, result) => {
             if(err){
                 console.log(err);
@@ -128,6 +165,19 @@ app.post("/payment", (req, res) => {
             } else {
                 console.log("New Payment made");
                 res.status(200).send({message: "Data successfully inserted"});
+            }
+        }
+    )
+
+    // Membership Table
+    db.query("INSERT INTO membership (membershipType, userId) VALUES (?, ?)", [memType, id], 
+        (err, result) => {
+            if(err){
+                console.log(err);
+                //res.status(500).send({message: "Fatal error: Insert operation failed"}); // Prevent errors (can only send response once)
+            } else {
+                console.log("New Member");
+                //res.status(200).send({message: "Data successfully inserted"}); // Prevent errors (can only send response once)
             }
         }
     )

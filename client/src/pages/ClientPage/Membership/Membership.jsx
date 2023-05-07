@@ -8,11 +8,14 @@ import Axios from "axios"
 const Membership = () => {
   const [cardNo, setCardNo] = useState("");
   const [cvc, setCVC] = useState("");
+  const [address, setaddress] = useState(""); 
+  const [suburb, setsuburb] = useState(""); 
+  const [postcode, setpostcode] = useState(""); 
+  const [cardexpiry, setCardExp] = useState("");
   const [membershipType, setMembershipType] = useState("");
 
   // For debugging purposes
   // console.log(localStorage.getItem('userId'))
-
   const handleSelectionChange = (event) => {
     setMembershipType(event.target.value);
   };
@@ -24,7 +27,12 @@ const Membership = () => {
     const regexcard = /^[0-9]{16}$/;
     const regexcvc = /^[0-9]{3}$/;
 
-    console.log(regexcard.test(cardNo))
+    const currentdate = new Date();
+    const currentyear = currentdate.getFullYear();
+    const year = cardexpiry.substring(2, 5);
+
+    // console.log(regexcard.test(cardNo))
+    console.log(membershipType);
   
     if(!regexcard.test(cardNo))
     {
@@ -34,14 +42,34 @@ const Membership = () => {
     {
        alert("CVC is invalid");
     }
+    if(year < currentyear)
+    {
+       alert("Credit Card is expired")
+    }
+    if(address.trim().length == 0)
+    {
+       alert("Address required");
+    }
+    if(suburb.trim().length == 0)
+    {
+       alert("Suburb required");
+    }
+    if(postcode.trim().length == 0)
+    {
+       alert("Postcode required");
+    }
     else
     {
       // handle insert with axios
-      Axios.post("http://localhost:8800/payment", {
+      Axios.post("http://localhost:8800/moredetails", {
+        address: address,
+        suburb: suburb,
+        postcode: postcode,
         cardNo: cardNo,
         cvc: cvc,
-        userId: localStorage.getItem('userId'),
-        membershipType: membershipType
+        cardexpiry: cardexpiry,
+        membershipType: membershipType,
+        userId: localStorage.getItem('userId')
       })
       .then((response) => {
         console.log(response);
@@ -52,8 +80,6 @@ const Membership = () => {
         alert("Insert Failed");
       });
     }
-    
-  
   };
 
   return (
@@ -72,33 +98,37 @@ const Membership = () => {
           <table className="center">
               <th className="enterDetails">
                 <div className="enter_deets">
-                  <h3 className="title">Enter Details:</h3>
+                  <h3 className="title">Enter Billing Details:</h3>
 
                   {/* Form for Enter Details */}
                   <form id="enter_deets" name="enter_deets">
-                      {/* Enter Fname */}
+
+                      {/* Enter Fname 
                       <label for="fname" className="Fname">First Name: </label> <br/>
                       <input type="text" id="fname" name="firstname" placeholder="Enter First Name"/><br/>
+                       */}
 
-                      {/* Enter Lname */}
+                      {/* Enter Lname 
                       <label for="lname" className="label2">Last Name: </label> <br/>
                       <input type="text" id="lname" name="Lastname" placeholder="Enter Last Name"/><br/>
+                      */}
 
                       {/* Enter Address */}
                       <label for="address" className="label2">Address: </label> <br/>
-                      <input type="text" id="address" name="Address" placeholder="Enter Address"/><br/>
+                      <input type="text" id="address" name="Address" placeholder="Enter Address" value={address} onChange={(event) => setaddress(event.target.value)}/><br/>
 
                       {/* Enter Suburb */}
                       <label for="suburb" className="label2">Suburb: </label> <br/>
-                      <input type="text" id="suburb" name="suburb" placeholder="Enter Suburb"/><br/>
+                      <input type="text" id="suburb" name="suburb" placeholder="Enter Suburb" value={suburb} onChange={(event) => setsuburb(event.target.value)}/><br/>
 
                       {/* Enter Post Code */}
                       <label for="postcode" className="label2">Post Code: </label> <br/>
-                      <input type="text" id="postcode" name="postcode" placeholder="Enter Postcode"/><br/>
+                      <input type="text" id="postcode" name="postcode" placeholder="Enter Postcode" value={postcode} onChange={(event) => setpostcode(event.target.value)}/><br/>
 
-                      {/* Enter Phone Number */}
+                      {/* Enter Phone Number 
                       <label for="phonenum" className="label2">Phone Number: </label> <br/>
                       <input type="text" id="phonenum" name="phonenum" placeholder="Enter Phone Number"/><br/>
+                      */}
                   </form>
                   </div>
               </th>
@@ -113,16 +143,16 @@ const Membership = () => {
 
                         {/* Radio Button for Membership Subscription */}
                         <div className="radbut">
-                          <input type="radio" id="memberSub" name="membershipType" onChange={handleSelectionChange}/>
-                          <label for="subscription"> Membership Subscription </label> 
+                          <input type="radio" id="memberSub" name="membershipType" value="Membership Subscription" onChange={handleSelectionChange}/>
+                          <label for="subscription">Membership Subscription</label> 
                         </div>
 
                         <br/>
 
                         {/* Radio Button for Pay- On-Demand  */}
                         <div className="radbut">
-                          <input type="radio" id="payOnDemand" name="membershipType" onChange={handleSelectionChange}/>
-                          <label for="payOnDemand" className="memLabel"> Pay-On-Demand </label>
+                          <input type="radio" id="payOnDemand" name="membershipType" value="Pay-On-Demand" onChange={handleSelectionChange}/>
+                          <label for="payOnDemand" className="memLabel">Pay-On-Demand</label>
                         </div>
 
                       </form>
@@ -133,7 +163,6 @@ const Membership = () => {
                    {/* Enter Card Deatils */}
                   <tr>  
                     <div className="cardDetails">
-
                       <h3 className="title">Enter Card Details: </h3>
 
                       <form id="cardDetail" name="cardDetail" >
@@ -144,7 +173,7 @@ const Membership = () => {
 
                         {/* Enter Expiry Date */}
                         <label for="expiryDate" className="label2">Expiry Date:</label>
-                        <input type="text" id="expiryDate" name="expiryDate" placeholder="Enter Card Number"/><br/>
+                        <input type="text" id="expiryDate" name="expiryDate" value={cardexpiry} placeholder="Enter Card Expiry" onChange={(event) => setCardExp(event.target.value)}/><br/>
 
                         {/* Enter CVC*/}
                         <label for="cvc" className="label2">CVC:</label>
@@ -158,7 +187,7 @@ const Membership = () => {
                   <tr>
                       <div className="Button">
                         <form onSubmit={handleSubmit}> {/* The end one with the type=submit is where you handle submit*/}
-                          <input className="submitButton" type="submit" value="Next Page"/>
+                          <input className="submitButton" type="submit" value="Make Payment"/>  {/*Next Page*/}
                         </form>
                       </div>
                   </tr>
