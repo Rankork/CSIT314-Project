@@ -1,0 +1,58 @@
+.task-selection {
+  font-family: var(--font-family);
+  padding-top: 62px; /*Header height*/
+}
+
+.tradie-table {
+  width: 100%;
+  padding: 10px;
+  margin-top: 10px;
+}
+
+.tradie-table td,
+th {
+  padding: 10px;
+  text-align: left;
+}
+
+.tradie-table th {
+  background-color: #4285f4;
+  color: white;
+  font-weight: lighter;
+}
+.select-tradie-button {
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+  border: none;
+}
+
+.select-tradie-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.tradie-count {
+  float: left;
+  padding: 10px;
+  padding-top: 100px;
+}
+
+.NextPage-btn {
+  background: #4285f4;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+}
+
+.NextPage-btn-container {
+  float: right;
+  padding: 10px;
+  padding-top: 100px;
+}

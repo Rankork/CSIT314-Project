@@ -50,8 +50,8 @@ const Header = () => {
           <Link
             to={
               isClient === true
-                ? "/client/selection"
-                : "/professional/selection"
+                ? "/client/task-selection"
+                : "/professional/task-selection"
             }
           >
             Selection

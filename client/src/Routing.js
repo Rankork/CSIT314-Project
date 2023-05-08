@@ -6,6 +6,7 @@ import LoginPage from "./Components/LoginPage/LoginPage";
 import ClientHome from "./_Client/pages/Home/home";
 import ClientMember from "./_Client/pages/Membership/membership";
 import TaskAllocation from "./_Client/pages/TaskAllocation/taskallocatoin";
+import TaskSelection from "./_Client/pages/TaskSelection/taskselection";
 // Professional Pages
 import ProfessionalHome from "./_Professional/pages/Home/home";
 import ProfessionalMember from "./_Professional/pages/Membership/membership";
@@ -24,6 +25,12 @@ const Routing = () => {
           exact
           path="/client/task-allocation"
           element={<TaskAllocation />}
+        />
+
+        <Route
+          exact
+          path="/client/task-selection"
+          element={<TaskSelection />}
         />
 
         {/*professional routes*/}
