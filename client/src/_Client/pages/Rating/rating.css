@@ -1,0 +1,34 @@
+.client-rating {
+  font-family: var(--font-family);
+  padding-top: 62px; /*Header height*/
+}
+
+.client-rating-table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 5px;
+}
+
+.NextPage-btn {
+  background: #4285f4;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+}
+
+.NextPage-btn:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.NextPage-btn-container {
+  float: right;
+  margin-right: 10px;
+}
