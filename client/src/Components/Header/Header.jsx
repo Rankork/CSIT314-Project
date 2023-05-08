@@ -39,8 +39,8 @@ const Header = () => {
           <Link
             to={
               isClient === true
-                ? "/client/taskAllocation"
-                : "/professional/taskAllocation"
+                ? "/client/task-allocation"
+                : "/professional/task-allocation"
             }
           >
             Task Allocation

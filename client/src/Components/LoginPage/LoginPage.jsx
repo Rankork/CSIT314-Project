@@ -13,11 +13,11 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    /* used for bypassing the database and testing code ! 
-    
-    //Manually set the user type // 
+    //used for bypassing the database and testing code !
 
+    //Manually set the user type //
     user.accountType = "Client";
+
     if (user.accountType === "Client") {
       navigate("/client");
     } else if (user.accountType === "Professional") {
@@ -25,7 +25,6 @@ const LoginPage = () => {
     } else {
       alert("Fatal Error");
     }
-    */
 
     // SQL query to check email and passwords
     Axios.post("http://localhost:8800/users", {

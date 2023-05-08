@@ -15,8 +15,6 @@ const Membership = () => {
 
         {/* Div for body of page */}
         <div className="Cleint">
-          <h1>Welcome, Client</h1>
-
           {/* Div for Enter Details */}
           <table className="center">
             <th className="enterDetails">
@@ -126,12 +124,12 @@ const Membership = () => {
                     <div className="radbut">
                       <input
                         type="radio"
-                        id="payOnDemand"
+                        id="commissionFee"
                         name="membershipType"
                       />
-                      <label for="payOnDemand" className="memLabel">
+                      <label for="commissionFee" className="memLabel">
                         {" "}
-                        Pay-On-Demand{" "}
+                        Commission Fee
                       </label>
                     </div>
                   </form>
