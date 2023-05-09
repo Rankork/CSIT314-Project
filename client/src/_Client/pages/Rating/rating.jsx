@@ -24,7 +24,9 @@ const Rating = () => {
         </table>
       </div>
       <div className="NextPage-btn-container">
-        <button className="NextPage-btn">Next Page</button>
+        <form action="/client/report">
+          <input className="NextPage-btn" type="submit" value="Next Page" />
+        </form>
       </div>
     </div>
   );

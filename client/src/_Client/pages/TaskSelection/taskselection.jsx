@@ -74,8 +74,11 @@ const TaskSelection = () => {
         <div className="tradie-count">
           <h2>{`Total number of respondents in area: ${avaliableTradies.length}`}</h2>
         </div>
+
         <div className="NextPage-btn-container">
-          <button className="NextPage-btn">Next Page</button>
+          <form action="/client/rating">
+            <input className="NextPage-btn" type="submit" value="Next Page" />
+          </form>
         </div>
       </div>
       <Footer />
