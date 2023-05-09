@@ -10,6 +10,7 @@ TODO:
     * Replace avaliableTradies with SQL query  
 */
 
+//DUMMY DATA -> TODO: replace with SQL
 const avaliableTradies = [
   {
     name: "John Doe",
@@ -51,17 +52,17 @@ const TaskSelection = () => {
             <th>Accept</th>
           </tr>
           <tbody>
-            {avaliableTradies.map((trade, pos) => (
-              <tr key={trade.name}>
+            {avaliableTradies.map((tradie, pos) => (
+              <tr key={tradie.name}>
                 <td>{pos + 1}</td>
-                <td>{trade.name}</td>
-                <td>{trade.location}</td>
-                <td>{trade.trade}</td>
-                <td>{trade.phone}</td>
+                <td>{tradie.name}</td>
+                <td>{tradie.location}</td>
+                <td>{tradie.trade}</td>
+                <td>{tradie.phone}</td>
                 <td>
                   <button
                     className="select-tradie-button"
-                    onClick={() => submitTradie(trade)}
+                    onClick={() => submitTradie(tradie)}
                   >
                     &#9989;
                   </button>
@@ -72,7 +73,9 @@ const TaskSelection = () => {
         </table>
 
         <div className="tradie-count">
-          <h2>{`Total number of respondents in area: ${avaliableTradies.length}`}</h2>
+          <h2>
+            Total number of respondents in area: {avaliableTradies.length}
+          </h2>
         </div>
 
         <div className="NextPage-btn-container">

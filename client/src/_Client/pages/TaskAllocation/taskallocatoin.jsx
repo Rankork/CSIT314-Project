@@ -29,6 +29,7 @@ const TaskAllocation = () => {
               id="task-description"
               type="textarea"
               rows="10"
+              cols="40"
               name="task-description"
               placeholder="Enter description of your task here..."
             ></textarea>
@@ -55,6 +56,16 @@ const TaskAllocation = () => {
           {/*TODO: Need to map task list */}
         </div>
       </div>
+      <div className="task-next-page-btn-container">
+        <form action="/client/rating">
+          <input
+            className="task-next-page-btn"
+            type="submit"
+            value="Next Page"
+          />
+        </form>
+      </div>
+
       <Footer />
     </div>
   );

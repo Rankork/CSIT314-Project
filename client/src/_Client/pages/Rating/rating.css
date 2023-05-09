@@ -10,6 +10,12 @@
   margin: 5px;
 }
 
+.client-rating-table td {
+  font-weight: bold;
+  text-align: left;
+  padding: 20px;
+}
+
 .NextPage-btn {
   background: #4285f4;
   border: 1px solid #ccc;
@@ -31,4 +37,11 @@
 .NextPage-btn-container {
   float: right;
   margin-right: 10px;
+}
+
+#feed-back-textarea {
+  text-align: left;
+  padding: 10px;
+  resize: none;
+  border-radius: 10px;
 }
