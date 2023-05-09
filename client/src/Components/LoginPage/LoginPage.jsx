@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
-import { Routes, Route, Link } from "react-router-dom";
-import Register from "../Register/Register"; // Min -> routes for register
 import "./login-page.css";
 
 const LoginPage = () => {
@@ -89,11 +87,6 @@ const LoginPage = () => {
           </Link>
         </form>
       </div>
-      <Routes>
-        <Route exact path="register" element={<Register />} />{" "}
-        {/*Note: Membership.jsx is under /client route defined in app.js */}
-        {/*Add more routes on other pages here*/}
-      </Routes>
     </div>
   );
 };
