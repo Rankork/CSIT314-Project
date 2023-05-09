@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Axios from "axios";
+import { Routes, Route, Link } from "react-router-dom";
+import Register from "../Register/Register"; // Min -> routes for register
 import "./login-page.css";
-
-import user from "../../user.js";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,51 +13,27 @@ const LoginPage = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    //used for bypassing the database and testing code !
-
-    //Manually set the user type //
-    user.accountType = "Client";
-
-    if (user.accountType === "Client") {
-      navigate("/client");
-    } else if (user.accountType === "Professional") {
-      navigate("/professional");
-    } else {
-      alert("Fatal Error");
-    }
-
-    // SQL query to check email and passwords
+    // TODO : UPDATE LOGIC
+    // SQL query to check email and passwords will go here !
     Axios.post("http://localhost:8800/users", {
       email: email,
       password: password,
     }).then((response) => {
-      //--------- FOR DEBUG PURPOSES -------------
-      //console.log(response)
-      //console.log(response.data)
-      //console.log(response.data[0].AccountType)
-      //console.log(response.status)
+      //--------- FOR DEBUG PURPOSES ------------
+      console.log(response);
+      console.log(response.data);
+      console.log(response.data[0].Id);
+      console.log(response.data[0].AccountType);
+      console.log(response.status);
 
       //---- LOGIC ----------------
-      if (response.status === 200) {
-        /// Updating the global user var
-        user.accountType = response.data[0].AccountType;
-
-        /*
-        TODO: 
-         * Update all of the params in user such as:
-             - user.location = ...
-             - user.fistName = ...
-             - user.lastName = ...
-            ect...
-        
-        Note user var is located in user.js file, this is so
-        that user var can be used in any location in the file.
-        */
-
+      if (response.status == 200) {
         // handle with OK HTTP status code
-        if (user.accountType == "Client") {
-          navigate("/client");
-        } else if (user.accountType == "Professional") {
+        if (response.data[0].AccountType == "Client") {
+          localStorage.setItem("userId", response.data[0].Id);
+          navigate("/client"); // Handle bringing relevant data over to next page
+        } else if (response.data[0].AccountType == "Professional") {
+          localStorage.setItem("userId", response.data[0].Id);
           navigate("/professional");
         } else {
           alert("Fatal Error");
@@ -106,8 +82,18 @@ const LoginPage = () => {
           <button className="login-btn" type="submit">
             Sign in
           </button>
+          <br></br>
+          <br></br>
+          <Link className="sign_up" to="register">
+            Not a member? Sign Up
+          </Link>
         </form>
       </div>
+      <Routes>
+        <Route exact path="register" element={<Register />} />{" "}
+        {/*Note: Membership.jsx is under /client route defined in app.js */}
+        {/*Add more routes on other pages here*/}
+      </Routes>
     </div>
   );
 };

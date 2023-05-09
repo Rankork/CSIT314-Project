@@ -1,6 +1,6 @@
 import React from "react";
 import "./rating.css";
-import Header from "../../../Components/Header/Header";
+import Header from "../ClientHeader/Header";
 import Footer from "../../../Components/Footer/Footer";
 
 const Rating = () => {

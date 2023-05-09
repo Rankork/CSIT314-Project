@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 // Global Pages
 import LoginPage from "./Components/LoginPage/LoginPage";
+import Register from "./Components/Register/Register";
 //Client Pages
 import ClientHome from "./_Client/pages/Home/home";
 import ClientMember from "./_Client/pages/Membership/membership";
@@ -21,6 +22,7 @@ const Routing = () => {
       <Routes>
         {/*global routes*/}
         <Route exact path="/" element={<LoginPage />} />
+        <Route exact path="/register" element={<Register />} />
 
         {/*client routes*/}
         <Route exact path="/client" element={<ClientHome />} />
