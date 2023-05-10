@@ -51,6 +51,11 @@ th {
   font-size: 20px;
 }
 
+.selection-NextPage-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 .selection-NextPage-btn-container {
   float: right;
   padding: 10px;

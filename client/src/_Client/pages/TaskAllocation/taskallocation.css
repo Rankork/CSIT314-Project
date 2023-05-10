@@ -119,6 +119,11 @@
   right: 20px;
 }
 
+.task-next-page-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
 /*Task list css*/
 .task-list-title {
   justify-content: center;
