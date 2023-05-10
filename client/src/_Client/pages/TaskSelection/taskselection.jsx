@@ -78,9 +78,13 @@ const TaskSelection = () => {
           </h2>
         </div>
 
-        <div className="NextPage-btn-container">
+        <div className="selection-NextPage-btn-container">
           <form action="/client/rating">
-            <input className="NextPage-btn" type="submit" value="Next Page" />
+            <input
+              className="selection-NextPage-btn"
+              type="submit"
+              value="Next Page"
+            />
           </form>
         </div>
       </div>

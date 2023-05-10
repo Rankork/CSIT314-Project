@@ -16,32 +16,34 @@
   padding: 20px;
 }
 
-.NextPage-btn {
+.rating-NextPage-btn {
   background: #4285f4;
   border: 1px solid #ccc;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 10px;
   width: 150px;
   height: 50px;
-
   color: white;
   font-family: var(--font-family);
   font-size: 20px;
 }
 
-.NextPage-btn:hover {
+.rating-NextPage-btn:hover {
   cursor: pointer;
   opacity: 0.7;
 }
 
-.NextPage-btn-container {
+.rating-NextPage-btn-container {
   float: right;
   margin-right: 10px;
+  margin-top: 50px;
 }
 
 #feed-back-textarea {
+  margin-top: 10px;
   text-align: left;
   padding: 10px;
   resize: none;
   border-radius: 10px;
+  width: 100%;
 }

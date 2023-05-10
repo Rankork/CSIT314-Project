@@ -7,6 +7,9 @@ body {
 
 /* Global CSS variables */
 :root {
+  min-height: 125vh; /* Page size */
+  position: relative;
+
   --color-bg-gradient: linear-gradient(
     180deg,
     rgba(130, 102, 135, 0.92) 7.81%,

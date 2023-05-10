@@ -20,26 +20,34 @@ const Rating = () => {
             </tr>
             <td>Rating:</td>
             <tr>
-              <div className="five-start-rating"></div>
+              <div className="five-start-rating">
+                {/*TODO: develop interactive 5 star rating system */}
+              </div>
             </tr>
             <tr>
               <td>
-                Feed back
+                <label for="feed-back-textarea">Feed Back</label>
                 <br />
                 <textarea
+                  name="feed-back-textarea"
+                  id="feed-back-textarea"
                   type="textarea"
                   rows="10"
+                  cols="150"
                   placeholder="Enter feed back here..."
-                  id="feed-back-textarea"
                 ></textarea>
               </td>
             </tr>
           </tbody>
         </table>
       </div>
-      <div className="NextPage-btn-container">
+      <div className="rating-NextPage-btn-container">
         <form action="/client/report">
-          <input className="NextPage-btn" type="submit" value="Next Page" />
+          <input
+            className="rating-NextPage-btn"
+            type="submit"
+            value="Next Page"
+          />
         </form>
       </div>
     </div>
