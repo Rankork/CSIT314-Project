@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import "./login-page.css";
-
+import { useNavigate, Link } from "react-router-dom";
+import Axios from "axios";
+import "./Login-page.css";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -13,12 +13,33 @@ const LoginPage = () => {
 
     // TODO : UPDATE LOGIC
     // SQL query to check email and passwords will go here !
-    const isClient = true;
-    if (isClient) {
-      navigate("/client");
-    } else {
-      navigate("/professional");
-    }
+    Axios.post("http://localhost:8800/users", {
+      email: email,
+      password: password,
+    }).then((response) => {
+      //--------- FOR DEBUG PURPOSES ------------
+      console.log(response);
+      console.log(response.data);
+      console.log(response.data[0].Id);
+      console.log(response.data[0].AccountType);
+      console.log(response.status);
+
+      //---- LOGIC ----------------
+      if (response.status == 200) {
+        // handle with OK HTTP status code
+        if (response.data[0].AccountType == "Client") {
+          localStorage.setItem("userId", response.data[0].Id);
+          navigate("/client"); // Handle bringing relevant data over to next page
+        } else if (response.data[0].AccountType == "Professional") {
+          localStorage.setItem("userId", response.data[0].Id);
+          navigate("/professional");
+        } else {
+          alert("Fatal Error");
+        }
+      } else {
+        alert("Error with session");
+      }
+    });
   };
 
   useEffect(() => {
@@ -59,6 +80,11 @@ const LoginPage = () => {
           <button className="login-btn" type="submit">
             Sign in
           </button>
+          <br></br>
+          <br></br>
+          <Link className="sign_up" to="register">
+            Not a member? Sign Up
+          </Link>
         </form>
       </div>
     </div>

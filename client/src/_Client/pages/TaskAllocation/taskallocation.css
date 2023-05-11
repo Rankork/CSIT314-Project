@@ -1,0 +1,132 @@
+.task-allocation {
+  font-family: var(--font-family);
+  padding-top: 62px; /*Header height*/
+  display: flex;
+  justify-content: space-between;
+}
+
+.add-task-container {
+  padding: 10px;
+  margin: 20px;
+
+  background: #eeeeee;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.task-list-container {
+  flex: auto;
+  padding: 10px;
+  margin: 20px;
+
+  background: #eeeeee;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25), 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 30px;
+}
+
+.add-task-title {
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.task-information {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.task-information label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.task-information input,
+.task-information textarea {
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
+
+.task-information textarea {
+  border-radius: 10px;
+  padding: 10px;
+  resize: none;
+}
+
+#task-title,
+#task-description,
+#select-tradie {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  outline: none;
+  border: none;
+}
+
+#task-description,
+#select-tradie {
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+#task-title {
+  width: 100%;
+}
+
+#task-description {
+  height: auto;
+  text-align: left;
+}
+
+.task-submit-button {
+  margin-top: 50px;
+  align-items: center;
+  background: #4285f4;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+}
+
+.task-submit-button:hover {
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.task-next-page-btn-container {
+  position: relative;
+  margin: 20px;
+}
+
+.task-next-page-btn {
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 150px;
+  height: 50px;
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+
+  bottom: 20px;
+  right: 20px;
+}
+
+.task-next-page-btn:hover {
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+/*Task list css*/
+.task-list-title {
+  justify-content: center;
+  margin-top: 5px;
+  margin-bottom: 20px;
+}
