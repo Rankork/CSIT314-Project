@@ -9,13 +9,14 @@ import ClientMember from "./_Client/pages/Membership/membership";
 import TaskAllocation from "./_Client/pages/TaskAllocation/taskallocatoin";
 import TaskSelection from "./_Client/pages/TaskSelection/taskselection";
 import ClientRating from "./_Client/pages/Rating/rating";
-//TODO : import ClientReport from "./_Client/pages/Report/report";
+import ClientReport from "./_Client/pages/Report/report";
 // Professional Pages
 import ProfessionalHome from "./_Professional/pages/Home/home";
 import ProfessionalMember from "./_Professional/pages/Membership/membership";
 //TODO : import ProfessionalTaskSelection form "./_Professional/pages/TaskSelection/taskselection";
 //TODO : import ProfessionalRating from "./_Professional/pages/Rating/rating";
-//TODO : import ProfessionalReport from "./_Professional/pages/Report/report";
+import ProfessionalReport from "./_Professional/pages/Report/report";
+
 const Routing = () => {
   return (
     <Router>
@@ -38,7 +39,7 @@ const Routing = () => {
           element={<TaskSelection />}
         />
         <Route exact path="/client/rating" element={<ClientRating />} />
-        {/*TODO : <Route exact path ="/client/report" element={<ClientReport/>}>*/}
+        <Route exact path="/client/report" element={<ClientReport />} />
         {/*professional routes*/}
         <Route exact path="/professional" element={<ProfessionalHome />} />
         <Route
@@ -48,7 +49,11 @@ const Routing = () => {
         />
         {/*TODO : <Route exact path ="/professional/task-selection" element={<ProfessionalTaskSelection/>}>*/}
         {/*TODO : <Route exact path="/professional/rating" element={<ProfessionalTaskSelection />} />*/}
-        {/*TODO : <Route exact path="/professional/report" element={<ProfessionalReport/>} />*/}
+        <Route
+          exact
+          path="/professional/report"
+          element={<ProfessionalReport />}
+        />
       </Routes>
     </Router>
   );
