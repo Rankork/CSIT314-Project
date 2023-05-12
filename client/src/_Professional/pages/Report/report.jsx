@@ -5,7 +5,7 @@ import "./report.css";
 
 const Report = () => {
   return (
-    <div className="client-report-page">
+    <div className="professional-report-page">
       <Header />
       <div className="table-wrapper">
         <div className="client-table">
