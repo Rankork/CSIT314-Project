@@ -79,7 +79,7 @@ const TaskSelection = () => {
         </div>
 
         <div className="selection-NextPage-btn-container">
-          <form action="/client/rating">
+          <form action="/client/payment">
             <input
               className="selection-NextPage-btn"
               type="submit"

@@ -57,7 +57,7 @@ const TaskAllocation = () => {
         </div>
       </div>
       <div className="task-next-page-btn-container">
-        <form action="/client/rating">
+        <form action="/client/task-selection">
           <input
             className="task-next-page-btn"
             type="submit"
