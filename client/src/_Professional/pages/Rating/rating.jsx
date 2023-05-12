@@ -58,7 +58,7 @@ const Rating = () => {
         </table>
       </div>
       <div className="rating-NextPage-btn-container">
-        <form action="/client/report">
+        <form action="/professional/report">
           <input
             className="rating-NextPage-btn"
             type="submit"
