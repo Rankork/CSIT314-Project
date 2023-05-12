@@ -1,4 +1,115 @@
+/* Whole Div for the Client Page */
 .home-client {
-  padding-top: 62px;
   font-family: var(--font-family);
+}
+
+/* Title of page */
+.WelcomeCli{
+  padding-top: 82px;
+}
+
+/* About us - Table */
+.aboutusTable{
+  padding-left: 2%;
+  padding-top: 20px;
+  padding-right: 15%;
+  width: 100%;
+}
+
+/* About us - Heading */
+.aboutus{
+  text-align: left;
+}
+
+/* About us - Contents */
+.aboutusContents{
+  display: inline-block;
+  text-align: left;
+  padding-left: 10px;
+}
+
+/* Memebrship Options - Table */
+.MemOpt{
+  padding-left: 2%;
+  padding-top: 20px;
+  padding-right: 15%;
+  width: 100%;
+}
+
+/* Memebrship Options - Heading */
+.memberTit{
+  text-align: left;
+}
+
+/* Memebrship Options - inside table */
+.membershipTableOp{
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #D3D3D3;
+  width: 70%;
+}
+#test1{
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #D3D3D3;
+}
+/* Memebrship Options - insideTable - Memebrship Subcription */
+.MembershipSubTitle{
+  text-align: center;
+  padding: 10px;
+}
+
+/* Memebrship Options - insideTable - Pay-on-demand */
+.PayOnDemandTitle{
+  text-align: center;
+  padding: 10px;
+}
+
+/* Memebrship Options - insideTable - row border */
+#row{
+  border: 1px solid;
+  border-collapse: collapse;
+  border-color: #D3D3D3;
+}
+
+/* Memebrship Options - insideTable - row height */
+.row2{
+  height: 70px;
+}
+
+/* Profestional Table */
+.professional{
+  padding-left: 2%;
+  padding-top: 30px;
+  padding-right: 15%;
+  width: 100%;
+}
+
+/* Profestional Table - Title */
+.profesionalTitle{
+  text-align: left;
+}
+
+/* Profestional Table - Data contents */
+.proData{
+  text-align: left;
+  padding-left: 10px;
+  display: block;
+}
+
+/* Profestional Table - List - Ul */
+#list{
+  text-align: left;
+  padding-left: 40px;
+  
+  list-style-type: circle;
+}
+
+/* Profestional Table - List - li */
+#list1{
+  text-align: left;
+  padding-top: 10px;
+  list-style-type: circle;
 }
