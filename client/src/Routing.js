@@ -8,6 +8,7 @@ import ClientHome from "./_Client/pages/Home/home";
 import ClientMember from "./_Client/pages/Membership/membership";
 import TaskAllocation from "./_Client/pages/TaskAllocation/taskallocatoin";
 import TaskSelection from "./_Client/pages/TaskSelection/taskselection";
+import PaymentPage from "./_Client/pages/Payment/payment";
 import ClientRating from "./_Client/pages/Rating/rating";
 import ClientReport from "./_Client/pages/Report/report";
 // Professional Pages
@@ -38,6 +39,7 @@ const Routing = () => {
           path="/client/task-selection"
           element={<TaskSelection />}
         />
+        <Route exact path="client/payment" element={<PaymentPage />} />
         <Route exact path="/client/rating" element={<ClientRating />} />
         <Route exact path="/client/report" element={<ClientReport />} />
         {/*professional routes*/}
