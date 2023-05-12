@@ -20,8 +20,9 @@ const ClientPage = () => {
       
       {/* Div for body of page*/}
       <div className="Client">
-        <h1>Welcome, Client</h1>
-        <p>You are logged in, your user ID is: {userId}</p>
+        <h1>Welcome to Tradies !!</h1>
+        <br/>
+        <p>Tradies is a platform where client and professionals can connect <br/> where professionals provides their services and clients provides serivce request for help they need.</p>
       </div>
 
       {/* Div for fotter*/}

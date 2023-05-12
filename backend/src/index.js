@@ -34,7 +34,6 @@ app.use(
     })
   );
 
-
 // -------------- Database Connection -------------------------
 // Database Details for connection string
 const db = mysql.createConnection({

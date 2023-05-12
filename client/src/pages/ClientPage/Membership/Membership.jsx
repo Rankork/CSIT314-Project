@@ -113,16 +113,16 @@ const Membership = () => {
 
                         {/* Radio Button for Membership Subscription */}
                         <div className="radbut">
-                          <input type="radio" id="memberSub" name="membershipType" onChange={handleSelectionChange}/>
-                          <label for="subscription"> Membership Subscription </label> 
+                          <input type="radio" id="memberSub" name="membershipType" value="Membership Subscription" onChange={handleSelectionChange}/>
+                          <label for="subscription"> Membership Subscription</label> 
                         </div>
 
                         <br/>
 
                         {/* Radio Button for Pay- On-Demand  */}
                         <div className="radbut">
-                          <input type="radio" id="payOnDemand" name="membershipType" onChange={handleSelectionChange}/>
-                          <label for="payOnDemand" className="memLabel"> Pay-On-Demand </label>
+                          <input type="radio" id="payOnDemand" name="membershipType" value="Pay-On-Demand" onChange={handleSelectionChange}/>
+                          <label for="payOnDemand" className="memLabel"> Pay-On-Demand</label>
                         </div>
 
                       </form>

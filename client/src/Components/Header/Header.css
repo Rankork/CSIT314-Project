@@ -36,6 +36,11 @@ img{
     vertical-align: middle;
 }
 
+/* Min --> added */
+.createservicerequest {
+    padding: 14px 14px;
+    vertical-align: middle;
+}
 
 /* More Button table alligmnet */
 .more{
