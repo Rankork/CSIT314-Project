@@ -185,7 +185,7 @@ const Membership = () => {
               {/* Submit Button */}
               <tr>
                 <div className="Button">
-                  <form action="/professional/selection">
+                  <form action="/professional/task-selection">
                     <input
                       className="submitButton"
                       type="submit"

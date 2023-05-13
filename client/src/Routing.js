@@ -14,7 +14,7 @@ import ClientReport from "./_Client/pages/Report/report";
 // Professional Pages
 import ProfessionalHome from "./_Professional/pages/Home/home";
 import ProfessionalMember from "./_Professional/pages/Membership/membership";
-//TODO : import ProfessionalTaskSelection form "./_Professional/pages/TaskSelection/taskselection";
+import ProfessionalTaskSelection from "./_Professional/pages/TaskSelection/taskselection";
 import ProfessionalRating from "./_Professional/pages/Rating/rating";
 import ProfessionalReport from "./_Professional/pages/Report/report";
 
@@ -49,7 +49,11 @@ const Routing = () => {
           path="/professional/membership"
           element={<ProfessionalMember />}
         />
-        {/*TODO : <Route exact path ="/professional/task-selection" element={<ProfessionalTaskSelection/>}>*/}
+        <Route
+          exact
+          path="/professional/task-selection"
+          element={<ProfessionalTaskSelection />}
+        />
         <Route
           exact
           path="/professional/rating"

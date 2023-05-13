@@ -1,0 +1,85 @@
+.professional-task-selection {
+  font-family: var(--font-family);
+  padding-top: 62px; /*Header height*/
+}
+
+.task-header :hover {
+  cursor: pointer;
+  user-select: none;
+}
+
+.table-pad {
+  padding-left: 100px;
+}
+
+.task-container {
+  border-radius: 10px;
+  background: #e9e9e9;
+  width: auto;
+  margin: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+/* Location - Title */
+.Location {
+  width: auto;
+}
+
+/* Proximity - Title */
+.Proximity {
+  width: auto;
+  vertical-align: baseline;
+  padding-left: 20px;
+}
+
+/* Trade Needed  - Title */
+.TradeNeed {
+  width: auto;
+}
+
+/* Set Price- Title */
+.priceSet {
+  width: auto;
+  padding-left: 20px;
+}
+
+/* Cleint Name - Title */
+.clientName {
+  width: auto;
+}
+
+/* Cleint Name - Data  */
+.clientData {
+  text-align: left;
+}
+
+/* Cleint Phone Number - Title */
+.phoneNum {
+  width: auto;
+}
+
+/* Task Descrption - Title */
+.Descript {
+  width: auto;
+}
+
+/* Set Price - Textbox */
+#price-input {
+  width: auto;
+}
+
+/* td data */
+#value {
+  width: auto;
+  float: left;
+  vertical-align: baseline;
+  padding: 1px;
+}
+
+.price {
+  padding-left: 20px;
+}
+
+.rowT1 {
+  height: 90px;
+}
