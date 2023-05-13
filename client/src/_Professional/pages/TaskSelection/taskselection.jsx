@@ -11,7 +11,7 @@ const TaskSelection = () => {
   return (
     <div className="professional-task-selection">
       <Header />
-      <h1>Please select your taks to be completed</h1>
+      <h1>Please select your tasks to be completed</h1>
       <div className="task-container">
         <div
           className="task-header"
@@ -65,16 +65,6 @@ const TaskSelection = () => {
                   <td id="value" clientData="clientData" colSpan="2">
                     John Doe
                   </td>
-
-                  {/*
-                  <td className="price">
-                    <input
-                      id="price-input"
-                      type="Text"
-                      placeholder="Enter Price"
-                    />
-                  </td>
-                */}
                 </tr>
 
                 {/* Table - Row 4 */}
@@ -107,10 +97,10 @@ const TaskSelection = () => {
           <h3>
             <table>
               <tr className="table-header">
-                <th>1</th>
-                <th className="table-pad">Kitchen Sink needs to be Fixed</th>
-                <th className="table-pad">Prestons</th>
-                <th className="table-pad">Plumber</th>
+                <th>2</th>
+                <th className="table-pad">Task description here</th>
+                <th className="table-pad">Location here</th>
+                <th className="table-pad">Tradie type here</th>
               </tr>
             </table>
           </h3>
@@ -119,7 +109,57 @@ const TaskSelection = () => {
         {task2_expand && (
           <div className="task-content">
             <hr />
-            dsjaldsjakldjksa djksaldjksaljdklsa
+            {/* Table*/}
+            <table className="task1">
+              {/* Table - Row 1 */}
+              <tr id="rowT1">
+                <th className="Location">Location:</th>
+                <td id="value"> 22 Fovex Avenue, Liverpool, NSW </td>
+
+                <th className="Proximity">Proximity:</th>
+                <td id="value"> 10 km</td>
+              </tr>
+
+              {/* Table - Row 2 */}
+              <tr id="rowT1">
+                <th className="TradeNeed">Trade Needed:</th>
+                <td id="value"> Carpenter</td>
+
+                <th className="priceSet">Set price: </th>
+                <td>
+                  <input
+                    id="price-input"
+                    type="Text"
+                    placeholder="Enter Price"
+                  />
+                </td>
+              </tr>
+
+              {/* Table - Row 3 */}
+              <tr id="rowT1">
+                <th className="clientName">Client Name: </th>
+                <td id="value" clientData="clientData" colSpan="2">
+                  John Doe
+                </td>
+              </tr>
+
+              {/* Table - Row 4 */}
+              <tr id="rowT1">
+                <th className="phoneNum">Client Phone Number: </th>
+                <td id="value" colspan="2">
+                  0488222902
+                </td>
+              </tr>
+
+              {/* Table - Row 4 */}
+              <tr id="rowT1">
+                <th className="Descript">Description: </th>
+                <td id="value" colspan="3">
+                  Wood fence needs to be build in my backyard out of Pine wood
+                  ...
+                </td>
+              </tr>
+            </table>
           </div>
         )}
       </div>
@@ -132,10 +172,10 @@ const TaskSelection = () => {
           <h3>
             <table>
               <tr className="table-header">
-                <th>1</th>
-                <th className="table-pad">Kitchen Sink needs to be Fixed</th>
-                <th className="table-pad">Prestons</th>
-                <th className="table-pad">Plumber</th>
+                <th>3</th>
+                <th className="table-pad">Task description here</th>
+                <th className="table-pad">Location here</th>
+                <th className="table-pad">Tradie type here.</th>
               </tr>
             </table>
           </h3>
@@ -144,7 +184,57 @@ const TaskSelection = () => {
         {task3_expand && (
           <div className="task-content">
             <hr />
-            jdksaljdksaljdlsa dksaljdksaljdl
+            {/* Table*/}
+            <table className="task1">
+              {/* Table - Row 1 */}
+              <tr id="rowT1">
+                <th className="Location">Location:</th>
+                <td id="value"> 22 Fovex Avenue, Liverpool, NSW </td>
+
+                <th className="Proximity">Proximity:</th>
+                <td id="value"> 10 km</td>
+              </tr>
+
+              {/* Table - Row 2 */}
+              <tr id="rowT1">
+                <th className="TradeNeed">Trade Needed:</th>
+                <td id="value"> Carpenter</td>
+
+                <th className="priceSet">Set price: </th>
+                <td>
+                  <input
+                    id="price-input"
+                    type="Text"
+                    placeholder="Enter Price"
+                  />
+                </td>
+              </tr>
+
+              {/* Table - Row 3 */}
+              <tr id="rowT1">
+                <th className="clientName">Client Name: </th>
+                <td id="value" clientData="clientData" colSpan="2">
+                  John Doe
+                </td>
+              </tr>
+
+              {/* Table - Row 4 */}
+              <tr id="rowT1">
+                <th className="phoneNum">Client Phone Number: </th>
+                <td id="value" colspan="2">
+                  0488222902
+                </td>
+              </tr>
+
+              {/* Table - Row 4 */}
+              <tr id="rowT1">
+                <th className="Descript">Description: </th>
+                <td id="value" colspan="3">
+                  Wood fence needs to be build in my backyard out of Pine wood
+                  ...
+                </td>
+              </tr>
+            </table>
           </div>
         )}
       </div>
