@@ -3,18 +3,19 @@
   padding-top: 62px;
 }
 
-.Cleint {
+.Client {
   padding-top: 15px;
 }
 
-/* Table Header -> For Enter Deatils */
+/* Table Header -> For Enter Details */
 .enterDetails {
   padding: 15px;
   text-align: left;
 }
 
-/* Div -> For enter Deatils */
-.register {
+/* Div -> For enter Details */
+.enter_deets {
+  /* Min -> changed className to prevent css overlap */
   border-radius: 10px;
   background: #e9e9e9;
   padding-left: 10px;
@@ -90,7 +91,7 @@ input[type="radio"] {
 }
 
 /* Div -> For Enter Card Deatils  */
-.cardDeatils {
+.cardDetails {
   border-radius: 10px;
   background: #e9e9e9;
   padding-left: 10px;
@@ -120,6 +121,7 @@ input[type="submit"] {
 /* Submit Button */
 .submitButton {
   cursor: pointer;
+  margin-left: 15px;
 }
 
 .submitButton:hover {
@@ -132,6 +134,7 @@ input[type="submit"] {
   margin-right: auto;
 }
 
-.Button {
+.Button-container {
   padding-top: 15px;
+  margin-left: 10px;
 }

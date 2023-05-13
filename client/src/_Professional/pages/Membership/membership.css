@@ -136,6 +136,8 @@ input[type=submit]{
     margin-right: auto;
 }
 
-.Button{
-    padding-top: 15px ;
-}
+.Button-container {
+    padding-top: 15px;
+    margin-left: 10px;
+  }
+  

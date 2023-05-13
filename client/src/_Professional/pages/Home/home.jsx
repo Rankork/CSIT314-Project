@@ -4,6 +4,7 @@ import Header from "../ProfessionalHeader/Header";
 import "./home.css";
 
 const Home = () => {
+  const userId = localStorage.getItem('userId');
   return (
     <div className="home-prof">
     {/* Div for whole Page Above ^ */}
@@ -13,7 +14,8 @@ const Home = () => {
     
     {/*Welcome Client - Tittle */}
       <h1 className="WelcomePro">Welcome, Professional</h1>
-
+      <p>You are logged in, your user ID is: {userId}</p>
+      
     {/* About us - Table*/}
      <table className="aboutusTablePro">
           <tr>

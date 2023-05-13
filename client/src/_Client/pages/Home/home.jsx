@@ -4,17 +4,19 @@ import Header from "../ClientHeader/Header";
 import "./home.css";
 
 const Home = () => {
+  const userId = localStorage.getItem('userId');
+
   return (
     <div className="home-client">
       {/* Div for whole Page Above ^ */}
 
       {/* React Header Call*/}
       <Header />
-
+      
       {/* Title for home page "Welcome, Client */}
       <h1 className="WelcomeCli">Welcome, Client</h1>
-
-
+      <p>You are logged in, your user ID is: {userId}</p>
+      
       {/* About us - Table  */}
       <table className="aboutusTable">
           <tr>
