@@ -9,7 +9,7 @@ body.loginPage {
 
 .login__container {
   position: absolute;
-  top: 50%;
+  top: 40%; /* fix here */
   left: 50%;
   width: 400px;
   height: 335px;

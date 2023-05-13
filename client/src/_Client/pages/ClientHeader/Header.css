@@ -97,5 +97,6 @@ li Link {
   background-color: white;
   border: none;
   font-size: 16px;
+  margin-top: 65px;  /* Min -> CSS fixes */
   font-family: var(--font-family);
 }

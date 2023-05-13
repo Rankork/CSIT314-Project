@@ -24,25 +24,9 @@ const Register = () => {
     event.preventDefault(); 
     const regexphone = /^[0-9]{9}$/;
   
-    if(password != cfmpassword)
+    if(password != cfmpassword || email.trim().length == 0 || !regexphone.test(phonenumber) || firstname.trim().length == 0 || lastname.trim().length == 0 || accountType == "Choose AccountType")
     {
-       alert("Password mismatch");
-    }
-    if(email.trim().length == 0)
-    {
-       alert("Email required");
-    }
-    if(!regexphone.test(phonenumber))
-    {
-       alert("Phone number must be 9 digits");
-    }
-    if(firstname.trim().length == 0)
-    {
-       alert("First Name required");
-    }
-    if(lastname.trim().length == 0)
-    {
-       alert("Last Name required");
+       alert("One or more field does not meet criteria or unfilled");
     }
     else
     {
@@ -51,7 +35,8 @@ const Register = () => {
           password: password,
           firstname: firstname,
           lastname: lastname,
-          phonenumber: phonenumber
+          phonenumber: phonenumber,
+          accountType: accountType
         })
         .then((response) => {
           console.log(response);
@@ -61,6 +46,16 @@ const Register = () => {
           console.log(error);
           alert("Insert Failed");
         });
+
+        // Added changes to form clearing after submit
+        setFirstname('');
+        setLastname('');
+        setEmail('');
+        setPhonenumber('');
+        setPassword('');
+        setcfmPassword('');
+        setAccountType('Choose AccountType');
+
     }
   };
 
@@ -144,7 +139,8 @@ const Register = () => {
             <br/>
             <br/>
             <select id="AccountType" name="AccountType" onChange={handleSelectionChange} value={accountType}> 
-            {/*Do we want this? Professionals might be unqualified and frauds in the system*/}
+            {/*Do we want this? Professionals might be unqualified and frauds in the system -> tutor said don't think too much about it*/}
+              <option value="Choose AccoutType">Choose AccountType</option>
               <option value="Client">Client</option>
               <option value="Professional">Professional</option>
             </select>
