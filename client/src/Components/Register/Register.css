@@ -1,5 +1,6 @@
 body.RegisterPage {
   background: var(--color-bg-gradient);
+
 }
 
 .register {
@@ -9,11 +10,12 @@ body.RegisterPage {
   border-radius: 0%;
   background-color: none;
   box-shadow: none;
+  background: none;
 }
 
 .register__container {
   position: absolute;
-  top: 50%;
+  top: 40%;
   left: 50%;
   width: 400px;
   height: 700px;
@@ -85,8 +87,8 @@ body.RegisterPage {
 /*Min -> dropdown list*/
 .register select {
   float: left;
-  width: 150px;
-  height: 25px;
+  width: 200px;
+  height: 30px;
   font-size: 18px;
   font-family: var(--font-family);
 }

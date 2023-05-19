@@ -2,9 +2,24 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo from "../../../Images/logo.png";
 import Img1 from "../../../Images/user.png";
+import { useNavigate } from "react-router-dom";
 import "./Header.css";
 
 const Header = () => {
+  const navigate = useNavigate();
+  const handleUserLogout = (e) => {
+    localStorage.clear(); // clear associated value/variables associated to a login session
+    try {
+      fetch("http://localhost:3000/logout", {
+        method: "GET",
+        credentials: "same-origin",
+      });
+      navigate("/");
+    } catch (error) {
+      console.error("Error on Logout", error);
+    }
+  };
+
   return (
     <div className="header">
       <ul>
@@ -29,11 +44,14 @@ const Header = () => {
         <li className="report">
           <Link to={"/client/report"}>Report</Link>
         </li>
+
         <li className="account">
-          {" "}
-          <a href={"/client/account"}>
-            <img src={Img1} alt="img1" id="img1" />
-          </a>
+          <ul className="dropdown">
+            <button className="logout" onClick={handleUserLogout}>
+              <a href=""></a>Logout
+            </button>
+          </ul>
+          <img src={Img1} alt="img1" id="img1" />
         </li>
       </ul>
     </div>

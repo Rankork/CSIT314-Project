@@ -6,7 +6,7 @@ import Register from "./Components/Register/Register";
 //Client Pages
 import ClientHome from "./_Client/pages/Home/home";
 import ClientMember from "./_Client/pages/Membership/membership";
-import TaskAllocation from "./_Client/pages/TaskAllocation/taskallocatoin";
+import TaskAllocation from "./_Client/pages/TaskAllocation/taskallocation";
 import TaskSelection from "./_Client/pages/TaskSelection/taskselection";
 import PaymentPage from "./_Client/pages/Payment/payment";
 import ClientRating from "./_Client/pages/Rating/rating";

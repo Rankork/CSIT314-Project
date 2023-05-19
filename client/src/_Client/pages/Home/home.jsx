@@ -4,17 +4,19 @@ import Header from "../ClientHeader/Header";
 import "./home.css";
 
 const Home = () => {
+  const userId = localStorage.getItem('userId');
+
   return (
     <div className="home-client">
       {/* Div for whole Page Above ^ */}
 
       {/* React Header Call*/}
       <Header />
-
+      
       {/* Title for home page "Welcome, Client */}
       <h1 className="WelcomeCli">Welcome, Client</h1>
-
-
+      {/*<p>You are logged in, your user ID is: {userId}</p>*/}
+      
       {/* About us - Table  */}
       <table className="aboutusTable">
           <tr>
@@ -104,7 +106,7 @@ const Home = () => {
             {/* Memebrship Options - Table - Row 4 */}
               <tr id="row" className="row2">
                 {/* Memebrship Options - Table - Membership Description */}
-                  <td id="test1"> When you are a memeber you get perks like faster respose time, and higher priority for task completion </td>
+                  <td id="test1"> When you are a member you get perks like faster respose time, and higher priority for task completion </td>
                 {/* Memebrship Options - Table - Pay-On-Demand Description */}
                   <td id="test1"> Prices are calculated by the system and presented to customers up front. </td>
               </tr>

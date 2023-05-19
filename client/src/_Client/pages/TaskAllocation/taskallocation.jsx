@@ -37,9 +37,13 @@ const TaskAllocation = () => {
             {/*Task tradie selection*/}
             <label for="select-tradie: ">Type of Tradie Required:</label>
             <select id="select-tradie">
-              <option value="electrician">Electrician</option>
-              <option value="plumber">Plumber</option>
-              <option value="carpenter">Carpenter</option>
+              <option value="Choose Specialty">Choose Specialty</option> {/*Should we do ---------------*/}
+              <option value="Electrician">Electrician</option>
+              <option value="Landscaper">Landscaper</option>
+              <option value="Plumber">Plumber</option>
+              <option value="Carpenter">Carpenter</option>
+              <option value="Pest Control">Pest Control</option>
+              <option value="General Repair">General Repair</option>
             </select>
 
             {/*Submit task button*/}
@@ -54,6 +58,15 @@ const TaskAllocation = () => {
         <div className="task-list-title">
           <h1>Task List</h1>
           {/*TODO: Need to map task list */}
+             <table>
+                <thead>
+                  <tr className="heading">
+                      <th>Task #</th>
+                      <th>Title</th>
+                      <th>Estimated price</th>
+                  </tr>
+                </thead>
+            </table>
         </div>
       </div>
       <div className="task-next-page-btn-container">

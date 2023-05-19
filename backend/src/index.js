@@ -1,11 +1,12 @@
 import Express, { Router } from "express";
 //import mysql2 from "mysql2";
-import mysql from "mysql"
+import mysql from "mysql";
 import cors from "cors";
 import dotenv from "dotenv";
 import path from "path";
-import bodyparser from "body-parser"
-import session from "express-session"
+import bodyparser from "body-parser";
+import session from "express-session";
+import seedrandom from "seedrandom";
 
 const env_file = path.join(process.cwd(), "../", "env/", "backend.env");
 console.log("ENV File: " + env_file.toString());
@@ -33,9 +34,7 @@ app.use(
     })
   );
 
-
 // -------------- Database Connection -------------------------
-// Database Details for connection string
 // Database Details for connection string
 const db = mysql.createConnection({
     connectionLimit: 10,
@@ -68,7 +67,7 @@ app.get("http://localhost:3000/logout", (req, res) => {
     });
 });
 
-// points to users table (LOGIN)
+// points to users table (LOGIN functionality)
 app.post("/users", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
@@ -78,7 +77,7 @@ app.post("/users", (req, res) => {
                 //req.setEncoding({err: err});
             }else{
                 if(result.length > 0){
-                    req.session.loggedIn = true
+                    //req.session.userId = result[0].Id;
                     res.status(200).send(result) // handle with OK HTTP status code 
                     //res.json({ success: true, data: result });
                 }
@@ -89,6 +88,126 @@ app.post("/users", (req, res) => {
         }
     )
 })
+
+// change user id to fit figma prototype
+let seedVal = Math.floor(Math.random() * (999999999 - 1 + 1)) + 1;
+let range = seedrandom(seedVal);
+
+// Test insert (Register)
+app.post("/users/new", (req, res) => {
+  const id = Math.floor(range() * (999999999 - 100000000 + 1)) + 100000000;
+  const firstname = req.body.firstname;
+  const lastname = req.body.lastname;
+  const phonenumber = req.body.phonenumber
+  const email = req.body.email;
+  const password = req.body.password;
+  const accountType = req.body.accountType;
+  console.log(accountType);
+  db.query("INSERT INTO users (Id, First_Name, Last_Name, Phone_number, Email, Password, AccountType) VALUES (?, ?, ?, ?, ?, ?, ?)", [id, firstname, lastname, phonenumber, email, password, accountType], 
+      (err, result) => {
+          if(err){
+              console.log(err);
+              res.status(500).send({message: "Fatal error: Insert operation failed"});
+          } else {
+              console.log("New user inserted");
+              res.status(200).send({message: "Data successfully inserted"});
+          }
+      }
+  )
+})
+
+// For payment and billing
+app.post("/moredetails", (req, res) => {
+    const cardNo = req.body.cardNo;
+    console.log(req.body.membershipType); // Testing --> need to handle insertion into multiple tables for membership payment
+    const memType = req.body.membershipType;
+    const id = req.body.userId;
+    const cardExp = req.body.cardexpiry;
+    const Address = req.body.address;
+    const Suburb = req.body.suburb;
+    const Postcode = req.body.postcode;
+
+    let fulladdr = Address + " " + Suburb + " " + Postcode;
+    const gmapapikey = 'AIzaSyBRdpTXnCN8L9AG-iK53EjhmLRLxpXjAqk';
+    const gmapapiURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(fulladdr)}&key=${gmapapikey}`;
+
+    fetch(gmapapiURL)
+        .then(response => response.json())
+        .then(data => {
+            const location = data.results[0].geometry.location;
+            const latitude = location.lat;
+            const longitude = location.lng;
+            console.log(latitude);
+            console.log(longitude);
+
+            // Address Table
+            db.query("INSERT INTO address (Address, Suburb, Postcode, Latitude, Longitude, userid) VALUES (?, ?, ?, ?, ?, ?)", [Address, Suburb, Postcode, latitude, longitude, id], // Handle for lat and long values 
+            (err, result) => {
+                if(err){
+                    console.log(err);
+                    //res.status(500).send({message: "Fatal error: Insert operation failed"}); // Prevent errors (can only send response once)
+                } else {
+                    console.log("New Address provided");
+                    //res.status(200).send({message: "Data successfully inserted"}); // Prevent errors (can only send response once)
+                } 
+            }
+        )
+    })
+    .catch(error => console.error(error));
+
+
+
+    // Payment Table
+    db.query("INSERT INTO payment (PaymentAmount, PaymentType, CardNo, CardExpiry, userId) VALUES (?, ?, ?, ?, ?)", [50, "Membership subscription payment", cardNo, cardExp, id],  // Need to change paymentamount based on Subscription type
+        (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(500).send({message: "Fatal error: Insert operation failed"});
+            } else {
+                console.log("New Payment made");
+                res.status(200).send({message: "Data successfully inserted"});
+            }
+        }
+    )
+
+    // Membership Table
+    db.query("INSERT INTO membership (membershipType, userId) VALUES (?, ?)", [memType, id], 
+        (err, result) => {
+            if(err){
+                console.log(err);
+                //res.status(500).send({message: "Fatal error: Insert operation failed"}); // Prevent errors (can only send response once)
+            } else {
+                console.log("New Member");
+                //res.status(200).send({message: "Data successfully inserted"}); // Prevent errors (can only send response once)
+            }
+        }
+    )
+  })
+
+
+  // for service request tasks
+  /*
+  app.post("/service_requests", (req, res) => {
+        const task = req.body.task;
+        const specialty = req.body.specialty;
+        const task_desc = req.body.task_description;
+        const id = req.body.userId;
+        // service_requests table
+        db.query("INSERT INTO service_requests (request, request_desc, specialty, userid) VALUES (?, ?, ?, ?)", [task, task_desc, specialty, id],  // Need to change paymentamount based on Subscription type
+        (err, result) => {
+            if(err){
+                console.log(err);
+                res.status(500).send({message: "Fatal error: Insert operation failed"});
+            } else {
+                console.log("New Payment made");
+                res.status(200).send({message: "Data successfully inserted"});
+            }
+        }
+    )
+
+  })
+  */
+
 
 app.listen(process.env.BACKEND_PORT, () => {
     console.log("Backend listening on " + process.env.BACKEND_PORT) // NOTE: prints to console
