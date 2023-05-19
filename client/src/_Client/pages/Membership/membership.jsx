@@ -160,14 +160,27 @@ const Membership = () => {
                     </div>
                   </tr>
 
-                   {/* Submit Button */}
-                  <tr>
-                      <div className="Button">
-                        <form onSubmit={handleSubmit}> {/* The end one with the type=submit is where you handle submit*/}
-                          <input className="submitButton" type="submit" value="Next Page"/>
-                        </form>
-                      </div>
-                  </tr>
+                   <tr>
+                <div className="Button-container">
+                  <form action="/client/task-selection">
+                    <input
+                      className="submitButton"
+                      type="submit"
+                      value="Next Page"
+                    />
+                  </form>
+
+                  <form onSubmit={handleSubmit}>
+                    {/* The end one with the type=submit is where you handle submit*/}
+                    <input
+                      className="submitButton"
+                      type="submit"
+                      value="Make Payment"
+                    />
+                    {/*Make payment*/}
+                  </form>
+                </div>
+              </tr>
 
               </th>
           </table>
