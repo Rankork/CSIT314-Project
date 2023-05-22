@@ -161,6 +161,9 @@ def generate_wollongong_address(faker):
                 if result.status_code != 200:
                     continue
 
+                if len(result.json()["results"]) == 0:
+                    continue
+
                 google_locations = result.json()["results"][1:-1]
                 if len(google_locations) == 0:
                     continue
@@ -177,6 +180,9 @@ def generate_wollongong_address(faker):
 
                 result = requests.get(GOOGLE_API_GEOCODE_URL, params=params)
                 if result.status_code != 200:
+                    continue
+
+                if len(result.json()["results"]) == 0:
                     continue
 
                 location = result.json()["results"][0]
@@ -246,92 +252,91 @@ if __name__ == '__main__':
     client_count = 20
     professional_count = 20
 
-    generated_clients = []
-    generated_professionals = []
+    generated_users = []
     generated_client_addresses = []
     generated_memberships = []
     generated_service_requests = []
     generated_payments = []
 
     for i in range(0, client_count):
-        client = {
-            "Client_Id": secrets.SystemRandom().getrandbits(32),
-            "Name": faker.name(),
-            "Username": "",
-            # "phone_number": faker.phone_number(),
+        user = {
+            "Id": secrets.SystemRandom().getrandbits(32),
+            "First_Name": faker.first_name(),
+            "Last_Name": faker.last_name(),
+            # "Username": "",
+            "Phone_number": int("".join(filter(str.isdigit, faker.phone_number()))),
             "Email": faker.email(),
             "Password": "",
-            "Account_Status": "Active"
+            "AccountType": AccountTypes[0],
+            "pSpecialty": None
         }
 
-        client["Username"] = client["Name"].replace(" ", "")
-        client["Password"] = hashlib.md5(f"{client['Username']}123".encode()).hexdigest()
-        generated_clients.append(client)
+        # user["Username"] = user["Name"].replace(" ", "")
+        user["Password"] = hashlib.md5(f"{user['First_Name']}123".encode()).hexdigest()
+        generated_users.append(user)
 
     for i in range(0, professional_count):
         (speciality, service_desc) = secrets.SystemRandom().choice(ProfessionalSpecialities)
-        professional = {
-            "Professional_Id": secrets.SystemRandom().getrandbits(32),
-            "Name": faker.name(),
-            "Username": "",
+
+        user = {
+            "Id": secrets.SystemRandom().getrandbits(32),
+            "First_Name": faker.first_name(),
+            "Last_Name": faker.last_name(),
+            # "Username": "",
+            "Phone_number": int("".join(filter(str.isdigit, faker.phone_number()))),
             "Email": faker.email(),
             "Password": "",
-            "Account_Status": "Active",
-            "Professional_Type": speciality
+            "AccountType": AccountTypes[1],
+            "pSpecialty": speciality
         }
 
-        professional["Username"] = professional["Name"].replace(" ", "")
-        professional["Password"] = hashlib.md5(f"{professional['Username']}123".encode()).hexdigest()
-        generated_professionals.append(professional)
+        # user["Username"] = user["Name"].replace(" ", "")
+        user["Password"] = hashlib.md5(f"{user['First_Name']}123".encode()).hexdigest()
+        generated_users.append(user)
 
-    for client in generated_clients:
+    for client_user in [user for user in generated_users if user["AccountType"] == AccountTypes[0]]:
         street, suburb, state, post_code, latitude, longitude = generate_wollongong_address(faker)
         address = {
-            "Address_Id": secrets.SystemRandom().getrandbits(32),
-            "Street_Address": street,
+            "aid": secrets.SystemRandom().getrandbits(32),
+            "Address": street,
             "Suburb": suburb,
             "Postcode": post_code,
-            "State": state,
+            # "State": state,
             "Latitude": latitude,
             "Longitude": longitude,
-            "Client_Id": client["Client_Id"]
+            "userid": client_user["Id"]
         }
         generated_client_addresses.append(address)
 
         membership = {
-            "Member_Id": secrets.SystemRandom().getrandbits(32),
-            "Membership_Type": secrets.SystemRandom().choice(ClientMembershipTypes),
-            "Client_Id": client["Client_Id"],
-            "Professional_Id": None
+            "mid": secrets.SystemRandom().getrandbits(32),
+            "membershipType": secrets.SystemRandom().choice(ClientMembershipTypes),
+            "userId": client_user["Id"]
         }
         generated_memberships.append(membership)
 
         (speciality, service_desc) = secrets.SystemRandom().choice(ProfessionalSpecialities)
 
         request = {
-            "Request_Id": secrets.SystemRandom().getrandbits(32),
-            "Request_Type": speciality,
-            "Request_Description": service_desc,
-            "Request_Status": "Open",
-            "Request_Price": secrets.SystemRandom().randint(50, 150),
-            "Client_Id": client["Client_Id"],
-            "Professional_Id": None,
-            "Address_Id": address["Address_Id"]
+            "sid": secrets.SystemRandom().getrandbits(32),
+            "request": service_desc,
+            "request_desc": service_desc,
+            "specialty": speciality,
+            "price": secrets.SystemRandom().randint(50, 150),
+            "userid": client_user["Id"]
         }
         generated_service_requests.append(request)
 
-    for professional in generated_professionals:
-        membership_type = secrets.SystemRandom().choice(ProfessionalMembershipTypes)
+    for professional_user in [user for user in generated_users if user["AccountType"] == AccountTypes[1]]:
         membership = {
-            "Member_Id": secrets.SystemRandom().getrandbits(32),
-            "Membership_Type": membership_type,
-            "Client_Id": None,
-            "Professional_Id": professional["Professional_Id"]
+            "mid": secrets.SystemRandom().getrandbits(32),
+            "membershipType": secrets.SystemRandom().choice(ProfessionalMembershipTypes),
+            "userId": professional_user["Id"]
         }
         generated_memberships.append(membership)
 
     for membership in generated_memberships:
-        if "subscription" in membership["Membership_Type"]:
+        if "subscription" in membership["membershipType"]:
             payment_type = "Subscription payment"
             payment_amount = subscription_cost
         else:
@@ -339,22 +344,17 @@ if __name__ == '__main__':
             continue
 
         payment = {
-            "Payment_Id": secrets.SystemRandom().getrandbits(32),
-            "Payment_Type": payment_type,
-            "Payment_Amount": payment_amount,
-            "Client_Id": membership["Client_Id"],
-            "Professional_Id": membership["Professional_Id"],
-            "Request_Id": None,
-            "Card_Number": faker.credit_card_number(),
-            "Card_Expiry": faker.credit_card_expire(),
+            "Pid": secrets.SystemRandom().getrandbits(32),
+            "PaymentAmount": payment_amount,
+            "PaymentType": payment_type,
+            "CardNo": faker.credit_card_number(),
+            "CardExpiry": faker.credit_card_expire(),
+            "userId": membership["userId"]
         }
         generated_payments.append(payment)
 
-    with open("./data/clients.json", "w") as f:
-        json.dump(generated_clients, f, indent=4)
-
-    with open("./data/professionals.json", "w") as f:
-        json.dump(generated_professionals, f, indent=4)
+    with open("./data/users.json", "w") as f:
+        json.dump(generated_users, f, indent=4)
 
     with open("./data/address.json", "w") as f:
         json.dump(generated_client_addresses, f, indent=4)
@@ -362,7 +362,7 @@ if __name__ == '__main__':
     with open("./data/membership.json", "w") as f:
         json.dump(generated_memberships, f, indent=4)
 
-    with open("./data/service_request.json", "w") as f:
+    with open("./data/service_requests.json", "w") as f:
         json.dump(generated_service_requests, f, indent=4)
 
     with open("./data/payment.json", "w") as f:
