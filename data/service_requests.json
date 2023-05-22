@@ -1,0 +1,162 @@
+[
+    {
+        "sid": 3908600960,
+        "request": "Treat house for rats and cockroaches",
+        "request_desc": "Treat house for rats and cockroaches",
+        "specialty": "Pest Control",
+        "price": 104,
+        "userid": 16809755
+    },
+    {
+        "sid": 931544024,
+        "request": "Install new toilet bowl",
+        "request_desc": "Install new toilet bowl",
+        "specialty": "Plumber",
+        "price": 132,
+        "userid": 3661562692
+    },
+    {
+        "sid": 2575353771,
+        "request": "Fix squeaky cupboard hinge",
+        "request_desc": "Fix squeaky cupboard hinge",
+        "specialty": "Carpenter",
+        "price": 145,
+        "userid": 485511131
+    },
+    {
+        "sid": 3944997153,
+        "request": "Treat house for rats and cockroaches",
+        "request_desc": "Treat house for rats and cockroaches",
+        "specialty": "Pest Control",
+        "price": 132,
+        "userid": 561688208
+    },
+    {
+        "sid": 3293129550,
+        "request": "Paint outside side fence",
+        "request_desc": "Paint outside side fence",
+        "specialty": "Painter",
+        "price": 98,
+        "userid": 3567078852
+    },
+    {
+        "sid": 1791244245,
+        "request": "Fix leak in roof",
+        "request_desc": "Fix leak in roof",
+        "specialty": "Roof Plumber",
+        "price": 87,
+        "userid": 2648174680
+    },
+    {
+        "sid": 2793543731,
+        "request": "Install new toilet bowl",
+        "request_desc": "Install new toilet bowl",
+        "specialty": "Plumber",
+        "price": 108,
+        "userid": 2952320366
+    },
+    {
+        "sid": 2546611548,
+        "request": "Install new toilet bowl",
+        "request_desc": "Install new toilet bowl",
+        "specialty": "Plumber",
+        "price": 55,
+        "userid": 583848278
+    },
+    {
+        "sid": 930850515,
+        "request": "Install new shelving",
+        "request_desc": "Install new shelving",
+        "specialty": "Carpenter",
+        "price": 73,
+        "userid": 2180562862
+    },
+    {
+        "sid": 2290220408,
+        "request": "Paint bedroom a new color",
+        "request_desc": "Paint bedroom a new color",
+        "specialty": "Painter",
+        "price": 82,
+        "userid": 3773771553
+    },
+    {
+        "sid": 4192786822,
+        "request": "Install exhaust fan in bathroom",
+        "request_desc": "Install exhaust fan in bathroom",
+        "specialty": "Electrician",
+        "price": 70,
+        "userid": 2797136583
+    },
+    {
+        "sid": 3826024206,
+        "request": "Fix leaking shower head",
+        "request_desc": "Fix leaking shower head",
+        "specialty": "Plumber",
+        "price": 130,
+        "userid": 1750200291
+    },
+    {
+        "sid": 3880846919,
+        "request": "Treat house for rats and cockroaches",
+        "request_desc": "Treat house for rats and cockroaches",
+        "specialty": "Pest Control",
+        "price": 71,
+        "userid": 161966696
+    },
+    {
+        "sid": 793983425,
+        "request": "Install new tap in kitchen",
+        "request_desc": "Install new tap in kitchen",
+        "specialty": "Plumber",
+        "price": 142,
+        "userid": 1002937820
+    },
+    {
+        "sid": 880627457,
+        "request": "Fix broken guttering",
+        "request_desc": "Fix broken guttering",
+        "specialty": "Roof Plumber",
+        "price": 74,
+        "userid": 201606370
+    },
+    {
+        "sid": 4162975392,
+        "request": "Unclog toilet bowl",
+        "request_desc": "Unclog toilet bowl",
+        "specialty": "Plumber",
+        "price": 53,
+        "userid": 2640380272
+    },
+    {
+        "sid": 112124469,
+        "request": "Fix squeaky cupboard hinge",
+        "request_desc": "Fix squeaky cupboard hinge",
+        "specialty": "Carpenter",
+        "price": 110,
+        "userid": 1920255234
+    },
+    {
+        "sid": 1797040582,
+        "request": "Install new shelving",
+        "request_desc": "Install new shelving",
+        "specialty": "Carpenter",
+        "price": 105,
+        "userid": 265541023
+    },
+    {
+        "sid": 2859949683,
+        "request": "Install new tap in kitchen",
+        "request_desc": "Install new tap in kitchen",
+        "specialty": "Plumber",
+        "price": 144,
+        "userid": 3597591595
+    },
+    {
+        "sid": 691318605,
+        "request": "Paint outside side fence",
+        "request_desc": "Paint outside side fence",
+        "specialty": "Painter",
+        "price": 115,
+        "userid": 508457881
+    }
+]

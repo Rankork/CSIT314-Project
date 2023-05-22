@@ -7,121 +7,99 @@ import os
 import sys
 
 if __name__ == '__main__':
-    create_clients_table = """
-        CREATE TABLE IF NOT EXISTS clients (
-        Client_Id BIGINT NOT NULL AUTO_INCREMENT,
-        Name varchar(45) DEFAULT NULL,
-        Username varchar(45) DEFAULT NULL,
+    create_users_table = """
+        CREATE TABLE IF NOT EXISTS users (
+        Id BIGINT NOT NULL AUTO_INCREMENT,
+        First_Name varchar(45) DEFAULT NULL,
+        Last_Name varchar(45) DEFAULT NULL,
+        Phone_number BIGINT DEFAULT NULL,
         Email varchar(100) DEFAULT NULL,
         Password varchar(45) DEFAULT NULL,
-        Account_Status varchar(45) DEFAULT 'Active',
-        PRIMARY KEY (Client_Id)
-    )"""
-
-    create_professionals_table = """
-        CREATE TABLE IF NOT EXISTS professionals (
-        Professional_Id BIGINT NOT NULL AUTO_INCREMENT,
-        Name varchar(45) DEFAULT NULL,
-        Username varchar(45) DEFAULT NULL,
-        Email varchar(100) DEFAULT NULL,
-        Password varchar(45) DEFAULT NULL,
-        Account_Status varchar(45) DEFAULT 'Active',
-        Professional_Type varchar(45) DEFAULT NULL,
-        PRIMARY KEY (Professional_Id)
+        AccountType varchar(45) DEFAULT NULL,
+        pSpecialty varchar(45) DEFAULT NULL,
+        PRIMARY KEY (Id)
     )"""
 
     create_address_table = """
         CREATE TABLE IF NOT EXISTS address (
-	    Address_Id BIGINT NOT NULL AUTO_INCREMENT, 
-        Street_Address varchar(200) DEFAULT NULL,
+        aid BIGINT NOT NULL AUTO_INCREMENT,
+        Address varchar(200) DEFAULT NULL,
         Suburb varchar(45) DEFAULT NULL,
-        Postcode int DEFAULT NULL,
-        State varchar(45) DEFAULT NULL,
+        Postcode varchar(45) DEFAULT NULL,
         Latitude decimal(30,15) DEFAULT NULL,
         Longitude decimal(30,15) DEFAULT NULL,
-        Client_Id BIGINT NOT NULL,
-        PRIMARY KEY (`Address_Id`),
-        FOREIGN KEY (`Client_Id`) REFERENCES clients(Client_Id)
+        userid BIGINT DEFAULT NULL,
+        PRIMARY KEY (aid),
+        KEY Id_idx (userid),
+        CONSTRAINT Id FOREIGN KEY (userid) REFERENCES users (Id)
     )"""
 
     create_membership_table = """
         CREATE TABLE IF NOT EXISTS membership (
-	    Member_Id BIGINT NOT NULL AUTO_INCREMENT,
-        Membership_Type varchar(45) DEFAULT NULL,
-        Client_Id BIGINT DEFAULT NULL, 
-        Professional_Id BIGINT DEFAULT NULL,
-        NOT_NULL_CONSTRAINT BIGINT GENERATED ALWAYS AS (coalesce(Client_Id, Professional_Id)) VIRTUAL NOT NULL,
-        PRIMARY KEY (Member_Id),
-        FOREIGN KEY (Client_Id) REFERENCES clients(Client_Id),
-        FOREIGN KEY (Professional_Id) REFERENCES professionals (Professional_Id)
+        mid BIGINT NOT NULL AUTO_INCREMENT,
+        membershipType varchar(45) DEFAULT NULL,
+        userId BIGINT DEFAULT NULL,
+        PRIMARY KEY (mid),
+        KEY userid_idx (userId),
+        CONSTRAINT refuid FOREIGN KEY (userId) REFERENCES users (Id)
     )"""
 
-    create_service_request_table = """
-        CREATE TABLE IF NOT EXISTS service_request (
-	    Request_Id BIGINT NOT NULL AUTO_INCREMENT,
-        Request_Type varchar(45) NOT NULL, 
-        Request_Description varchar(500) DEFAULT NULL,
-        Request_Status varchar(45) DEFAULT NULL,
-        Request_Price int NOT NULL,
-        Client_Id BIGINT DEFAULT NULL, 
-        Professional_Id BIGINT DEFAULT NULL,
-        Address_Id BIGINT NOT NULL,
-        NOT_NULL_CONSTRAINT BIGINT GENERATED ALWAYS AS (coalesce(Client_Id, Professional_Id)) VIRTUAL NOT NULL,
-        PRIMARY KEY (Request_Id),
-        FOREIGN KEY (Client_Id) REFERENCES clients(Client_Id),
-        FOREIGN KEY (Professional_Id) REFERENCES professionals(Professional_Id),
-        FOREIGN KEY (Address_Id) REFERENCES address(Address_Id)
+    create_service_requests_table = """
+        CREATE TABLE IF NOT EXISTS service_requests (
+        sid BIGINT NOT NULL AUTO_INCREMENT,
+        request varchar(45) DEFAULT NULL,
+        request_desc varchar(500) DEFAULT NULL,
+        specialty varchar(45) DEFAULT NULL,
+        price int DEFAULT NULL,
+        userid BIGINT DEFAULT NULL,
+        PRIMARY KEY (sid),
+        KEY user_idx (userid),
+        CONSTRAINT user FOREIGN KEY (userid) REFERENCES users (`Id`)
     )"""
 
     create_payment_table = """
         CREATE TABLE IF NOT EXISTS payment (
-	    Payment_Id BIGINT NOT NULL AUTO_INCREMENT, 
-	    Payment_Type varchar(45) NOT NULL, 
-        Payment_Amount int DEFAULT NULL, 
-        Client_Id BIGINT DEFAULT NULL,
-	    Professional_Id BIGINT DEFAULT NULL, 
-        Request_Id BIGINT DEFAULT NULL,
-        Card_Number varchar(45) DEFAULT NULL,
-        Card_Expiry varchar(45) DEFAULT NULL,
-        NOT_NULL_CONSTRAINT BIGINT GENERATED ALWAYS AS (coalesce(Client_Id, Professional_Id)) VIRTUAL NOT NULL,
-        PRIMARY KEY (Payment_Id),
-        FOREIGN KEY (Client_Id) REFERENCES clients(Client_Id),
-        FOREIGN KEY (Professional_Id) REFERENCES professionals(Professional_Id),
-        FOREIGN KEY (Request_Id) REFERENCES service_request(Request_Id)
+        Pid BIGINT NOT NULL AUTO_INCREMENT,
+        PaymentAmount int DEFAULT NULL,
+        PaymentType varchar(45) DEFAULT NULL,
+        CardNo BIGINT DEFAULT NULL,
+        CardExpiry varchar(45) DEFAULT NULL,
+        userId BIGINT DEFAULT NULL,
+        PRIMARY KEY (Pid),
+        KEY userid_idx (userId),
+        CONSTRAINT userid FOREIGN KEY (userId) REFERENCES users (Id)
     )"""
 
-    create_ratings_table = """
-        CREATE TABLE IF NOT EXISTS ratings (
-	    Rating_Id BIGINT NOT NULL AUTO_INCREMENT, 
-        Rating_Number int DEFAULT NULL, 
-        Rating_Description int DEFAULT NULL, 
-        Client_Id BIGINT NOT NULL,
-        Professional_Id BIGINT NOT NULL, 
-        Request_Id BIGINT NOT NULL, 
-        PRIMARY KEY (Rating_Id),
-	    FOREIGN KEY (Client_Id) REFERENCES clients(Client_Id),
-        FOREIGN KEY (Professional_Id) REFERENCES professionals(Professional_Id),
-	    FOREIGN KEY (Request_Id) REFERENCES service_request(Request_Id)
+    create_feedback_table = """
+        CREATE TABLE IF NOT EXISTS feedback (
+        Fid BIGINT NOT NULL AUTO_INCREMENT,
+        client_rating varchar(45) DEFAULT NULL,
+        professional_rating varchar(45) DEFAULT NULL,
+        client_feedback varchar(500) DEFAULT NULL,
+        professional_feedback varchar(500) DEFAULT NULL,
+        job_notes varchar(500) DEFAULT NULL,
+        servid BIGINT DEFAULT NULL,
+        PRIMARY KEY (Fid),
+        KEY sid_idx (servid),
+        CONSTRAINT sid FOREIGN KEY (servid) REFERENCES service_requests (sid)
     )"""
 
     create_tables = [
-        create_clients_table,
-        create_professionals_table,
+        create_users_table,
         create_address_table,
         create_membership_table,
-        create_service_request_table,
+        create_service_requests_table,
         create_payment_table,
-        create_ratings_table
+        create_feedback_table
     ]
 
     cleanup_tables = [
-        "DROP TABLE IF EXISTS ratings",
+        "DROP TABLE IF EXISTS feedback",
         "DROP TABLE IF EXISTS payment",
-        "DROP TABLE IF EXISTS service_request",
+        "DROP TABLE IF EXISTS service_requests",
         "DROP TABLE IF EXISTS membership",
         "DROP TABLE IF EXISTS address",
-        "DROP TABLE IF EXISTS professionals",
-        "DROP TABLE IF EXISTS clients"
+        "DROP TABLE IF EXISTS users"
     ]
 
     # If new tables are needed, they must have a cleanup entry added,
