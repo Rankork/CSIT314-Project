@@ -47,3 +47,10 @@
   border-radius: 10px;
   width: 100%;
 }
+
+/* Min -> added styles */
+.five-start-rating
+{
+  float: left;
+  margin-left: 100px;
+}

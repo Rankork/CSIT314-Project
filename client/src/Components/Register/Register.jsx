@@ -15,7 +15,7 @@ const Register = () => {
   const [phonenumber, setPhonenumber] = useState("");
   const [accountType, setAccountType] = useState("");
 
-  const handleSelectionChange = (event) => {
+  const handleSelectChange = (event) => {
     setAccountType(event.target.value);
   };
 
@@ -138,7 +138,7 @@ const Register = () => {
             <label for="Acc_Type">Account Type</label>
             <br/>
             <br/>
-            <select id="AccountType" name="AccountType" onChange={handleSelectionChange} value={accountType}> 
+            <select id="AccountType" name="AccountType" onChange={handleSelectChange} value={accountType}> 
             {/*Do we want this? Professionals might be unqualified and frauds in the system -> tutor said don't think too much about it*/}
               <option value="Choose AccoutType">Choose AccountType</option>
               <option value="Client">Client</option>

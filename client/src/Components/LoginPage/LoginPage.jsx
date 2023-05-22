@@ -5,16 +5,23 @@ import { Routes, Route, Link } from "react-router-dom";
 import Register from "../Register/Register"; // Min -> routes for register
 import "./Login-page.css";
 
-
 const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
+  // Handle "Enter" Key press
+  function handleEnterKey(keyactionevent) {
+     if(keyactionevent.key == 'Enter')
+     {
+       keyactionevent.preventDefault();
+       handleSubmit(keyactionevent);
+     }
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    // TODO : UPDATE LOGIC
     // SQL query to check email and passwords will go here !
     Axios.post("http://localhost:8800/users", {
       email: email,
@@ -22,23 +29,28 @@ const LoginPage = () => {
     }).then((response) => {
       
        //--------- FOR DEBUG PURPOSES ------------
-       console.log(response)
-       console.log(response.data)
-       console.log(response.data[0].Id)
+       // console.log(response)
+       // console.log(response.data)
+       // console.log(response.data[0].Id)
+       console.log(response.data[0].First_Name)
+       console.log(response.data[0].Last_Name)
        console.log(response.data[0].AccountType)
-       console.log(response.status)
+       // console.log(response.status)
+       
 
        //---- LOGIC ----------------
        if(response.status == 200) // handle with OK HTTP status code 
        {
           if(response.data[0].AccountType == "Client")
           {
-              localStorage.setItem('userId', response.data[0].Id)
+              localStorage.setItem('Client_name', response.data[0].First_Name+" "+response.data[0].Last_Name)
+              localStorage.setItem('LuserId', response.data[0].Id)
               navigate("/client") // Handle bringing relevant data over to next page
           }
           else if(response.data[0].AccountType == "Professional")
           {
-              localStorage.setItem('userId', response.data[0].Id)
+              localStorage.setItem('Tradie_name', response.data[0].First_Name+" "+response.data[0].Last_Name)
+              localStorage.setItem('LuserId', response.data[0].Id)
               navigate("/professional")
           }
           else
@@ -75,6 +87,7 @@ const LoginPage = () => {
               type="email"
               placeholder="example@email.com"
               value={email}
+              onKeyPress={handleEnterKey}
               onChange={(event) => setEmail(event.target.value)}
             />
           </form>
@@ -85,6 +98,7 @@ const LoginPage = () => {
               type="password"
               placeholder="Enter password"
               value={password}
+              onKeyPress={handleEnterKey}
               onChange={(event) => setPassword(event.target.value)}
             />
           </form>

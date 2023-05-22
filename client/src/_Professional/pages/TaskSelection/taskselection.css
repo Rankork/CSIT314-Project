@@ -51,6 +51,7 @@
 /* Cleint Name - Data  */
 .clientData {
   text-align: left;
+  margin-top: 20px;
 }
 
 /* Cleint Phone Number - Title */
@@ -82,4 +83,19 @@
 
 .rowT1 {
   height: 90px;
+}
+
+.acceptbtn {
+  background: #4285f4;
+  border: 1px solid #ccc;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  width: 125px !important;
+  height: 35px !important;
+  left: 1518px;
+  float: right;
+  color: white;
+  font-family: var(--font-family);
+  font-size: 20px;
+  margin: 20px;
 }
