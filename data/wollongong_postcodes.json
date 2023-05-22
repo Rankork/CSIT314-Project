@@ -1,0 +1,110 @@
+[
+    {
+        "postcode": 2500,
+        "place_name": "Wollongong",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.424,
+        "longitude": 150.8934,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Wollongong DC",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4295,
+        "longitude": 150.8756,
+        "accuracy": 3
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Keiraville",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4167,
+        "longitude": 150.8667,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Mount Keira",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4189,
+        "longitude": 150.8542,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Gwynneville",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4167,
+        "longitude": 150.8875,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Wollongong West",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4248,
+        "longitude": 150.8642,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Mangerton",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4367,
+        "longitude": 150.8717,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Spring Hill",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -33.3988,
+        "longitude": 149.1525,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "North Wollongong",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4151,
+        "longitude": 150.8986,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Coniston",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.45,
+        "longitude": 150.8833,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "Mount Saint Thomas",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4433,
+        "longitude": 150.8722,
+        "accuracy": 4
+    },
+    {
+        "postcode": 2500,
+        "place_name": "West Wollongong",
+        "state_name": "New South Wales",
+        "state_code": "NSW",
+        "latitude": -34.4248,
+        "longitude": 150.8642,
+        "accuracy": 4
+    }
+]

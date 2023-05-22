@@ -1,0 +1,6 @@
+faker
+pandas >= 2.0.1
+python-dotenv
+mysql-connector-python
+docker-py
+argparse

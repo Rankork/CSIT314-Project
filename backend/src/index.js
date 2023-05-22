@@ -128,8 +128,7 @@ app.post("/moredetails", (req, res) => {
     const Postcode = req.body.postcode;
 
     let fulladdr = Address + " " + Suburb + " " + Postcode;
-    const gmapapikey = 'AIzaSyBRdpTXnCN8L9AG-iK53EjhmLRLxpXjAqk';
-    const gmapapiURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(fulladdr)}&key=${gmapapikey}`;
+    const gmapapiURL = `https://maps.googleapis.com/maps/api/geocode/json?address=${encodeURIComponent(fulladdr)}&key=${process.env.GOOGLE_MAPS_API_KEY}`;
 
     fetch(gmapapiURL)
         .then(response => response.json())

@@ -1,0 +1,242 @@
+[
+    {
+        "Member_Id": 3352285884,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2135622049,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 1885744738,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2861474930,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3850679914,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 2965013536,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3982857819,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2728587113,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 1938121106,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 1733614317,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3557629698,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 3168830741,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 2846473646,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2246211301,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3195497788,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 108018712,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3063960080,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 1058034756,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 2691067151,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 3539784261,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 987951008,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 3857896624,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 605211490,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 3204160979,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 767388404,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 995086187,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 1519671339,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 295058048,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 719022934,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 1443460478,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 1714399657,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 3727393535,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3151359848,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 3760617943,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 2079704238,
+        "Membership_Type": "Pay-on-demand",
+        "Client_Id": 2196962750,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3424869299,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2481509959,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 3883304713,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": 2268769769,
+        "Professional_Id": null
+    },
+    {
+        "Member_Id": 1201320858,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 1589655835
+    },
+    {
+        "Member_Id": 757561411,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 201187384
+    },
+    {
+        "Member_Id": 3728790948,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 2448467670
+    },
+    {
+        "Member_Id": 1664037498,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 3835259596
+    },
+    {
+        "Member_Id": 2418063550,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 2034749174
+    },
+    {
+        "Member_Id": 1277454377,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 1209514757
+    },
+    {
+        "Member_Id": 2042027355,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 1130107268
+    },
+    {
+        "Member_Id": 3445221217,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 3358638906
+    },
+    {
+        "Member_Id": 2813694108,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 3069746971
+    },
+    {
+        "Member_Id": 2925703176,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 1600200888
+    },
+    {
+        "Member_Id": 4203864482,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 2410424671
+    },
+    {
+        "Member_Id": 1637875537,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 949242159
+    },
+    {
+        "Member_Id": 2630810342,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 811708240
+    },
+    {
+        "Member_Id": 2770760668,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 3930388236
+    },
+    {
+        "Member_Id": 620227084,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 995030346
+    },
+    {
+        "Member_Id": 2141947800,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 1352567445
+    },
+    {
+        "Member_Id": 4204175639,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 1998063820
+    },
+    {
+        "Member_Id": 4167491606,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 3846277907
+    },
+    {
+        "Member_Id": 2429979438,
+        "Membership_Type": "Membership subscription",
+        "Client_Id": null,
+        "Professional_Id": 1917631153
+    },
+    {
+        "Member_Id": 1503688875,
+        "Membership_Type": "Commission fee",
+        "Client_Id": null,
+        "Professional_Id": 351321039
+    }
+]
