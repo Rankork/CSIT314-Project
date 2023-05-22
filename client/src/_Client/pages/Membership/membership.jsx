@@ -15,9 +15,9 @@ const Membership = () => {
   const [membershipType, setMembershipType] = useState("");
 
   // For debugging purposes
-  // console.log(localStorage.getItem('userId'))
+  // console.log(localStorage.getItem('LuserId'))
 
-  const handleSelectionChange = (event) => {
+  const handleSelectChange = (event) => {
     setMembershipType(event.target.value);
   };
 
@@ -50,7 +50,7 @@ const Membership = () => {
         cvc: cvc,
         cardexpiry: cardexpiry,
         membershipType: membershipType,
-        userId: localStorage.getItem('userId')
+        userId: localStorage.getItem('LuserId')
       })
       .then((response) => {
         console.log(response);
@@ -119,7 +119,7 @@ const Membership = () => {
 
                         {/* Radio Button for Membership Subscription */}
                         <div className="radbut">
-                          <input type="radio" id="memberSub" name="membershipType" value="Membership Subscription" onChange={handleSelectionChange} checked={membershipType == 'Membership Subscription'}/>
+                          <input type="radio" id="memberSub" name="membershipType" value="Membership Subscription" onChange={handleSelectChange} checked={membershipType == 'Membership Subscription'}/>
                           <label for="subscription"> Membership Subscription</label> 
                         </div>
 
@@ -127,7 +127,7 @@ const Membership = () => {
 
                         {/* Radio Button for Pay- On-Demand  */}
                         <div className="radbut">
-                          <input type="radio" id="payOnDemand" name="membershipType" value="Pay-On-Demand" onChange={handleSelectionChange} checked={membershipType == 'Pay-On-Demand'}/>
+                          <input type="radio" id="payOnDemand" name="membershipType" value="Pay-On-Demand" onChange={handleSelectChange} checked={membershipType == 'Pay-On-Demand'}/>
                           <label for="payOnDemand" className="memLabel"> Pay-On-Demand</label>
                         </div>
 
@@ -160,27 +160,14 @@ const Membership = () => {
                     </div>
                   </tr>
 
-                   <tr>
-                <div className="Button-container">
-                  <form action="/client/task-selection">
-                    <input
-                      className="submitButton"
-                      type="submit"
-                      value="Next Page"
-                    />
-                  </form>
-
-                  <form onSubmit={handleSubmit}>
-                    {/* The end one with the type=submit is where you handle submit*/}
-                    <input
-                      className="submitButton"
-                      type="submit"
-                      value="Make Payment"
-                    />
-                    {/*Make payment*/}
-                  </form>
-                </div>
-              </tr>
+                   {/* Submit Button */}
+                  <tr>
+                      <div className="Button">
+                        <form onSubmit={handleSubmit}> {/* The end one with the type=submit is where you handle submit*/}
+                          <input className="submitButton" type="submit" value="Sign Up"/>
+                        </form>
+                      </div>
+                  </tr>
 
               </th>
           </table>

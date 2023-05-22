@@ -16,33 +16,34 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Table structure for table `users`
+-- Table structure for table `feedback`
 --
 
-DROP TABLE IF EXISTS `users`;
+DROP TABLE IF EXISTS `feedback`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `users` (
-  `Id` int NOT NULL AUTO_INCREMENT,
-  `First_Name` varchar(45) DEFAULT NULL,
-  `Last_Name` varchar(45) DEFAULT NULL,
-  `Phone_number` int DEFAULT NULL,
-  `Email` varchar(100) DEFAULT NULL,
-  `Password` varchar(45) DEFAULT NULL,
-  `AccountType` varchar(45) DEFAULT NULL,
-  `pSpecialty` varchar(45) DEFAULT NULL,
-  PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=952134486 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+CREATE TABLE `feedback` (
+  `Fid` int NOT NULL AUTO_INCREMENT,
+  `client_rating` varchar(45) DEFAULT NULL,
+  `professional_rating` varchar(45) DEFAULT NULL,
+  `client_feedback` varchar(500) DEFAULT NULL,
+  `professional_feedback` varchar(500) DEFAULT NULL,
+  `job_notes` varchar(500) DEFAULT NULL,
+  `servid` int DEFAULT NULL,
+  PRIMARY KEY (`Fid`),
+  KEY `sid_idx` (`servid`),
+  CONSTRAINT `sid` FOREIGN KEY (`servid`) REFERENCES `service_requests` (`sid`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
--- Dumping data for table `users`
+-- Dumping data for table `feedback`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (116211705,'Nick','Terryson',895365745,'NT@gmail.com','admin','Client',NULL),(122585235,'John','Henderson',854752635,'JH@outlook.com','pixieburst','Professional','Electrician'),(153897865,'Jasmine','Todd',486524585,'JT@outlook.com','myfavbish','Client',NULL),(273298173,'Damain ','Welwood',458784596,'DW@outlook.com','pass123','Professional','Plumber'),(411091724,'Billy ','Burton',756248896,'BB@yahoo.com','passwd','Client',NULL),(563584524,'Merle','Jacobson',785625752,'MJ@outlook.com','axelvarance','Professional','Carpenter'),(766479142,'Karl','Ethans',652895152,'KE@yahoo.com','password','Client',NULL),(952134485,'Clare','Tenwood',426584875,'CT@outlook.com','chauncey','Professional','Landscaper');
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
+LOCK TABLES `feedback` WRITE;
+/*!40000 ALTER TABLE `feedback` DISABLE KEYS */;
+INSERT INTO `feedback` VALUES (1,'4','4','Warm and Friendly','Warm, Friendly and knowledgeable of task','Replacement of entire kitchen flaucet and new pipings required.',5);
+/*!40000 ALTER TABLE `feedback` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

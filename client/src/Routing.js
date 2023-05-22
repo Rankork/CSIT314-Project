@@ -39,7 +39,7 @@ const Routing = () => {
           path="/client/task-selection"
           element={<TaskSelection />}
         />
-        <Route exact path="client/payment" element={<PaymentPage />} />
+        <Route exact path="/client/payment" element={<PaymentPage />} />
         <Route exact path="/client/rating" element={<ClientRating />} />
         <Route exact path="/client/report" element={<ClientReport />} />
         {/*professional routes*/}

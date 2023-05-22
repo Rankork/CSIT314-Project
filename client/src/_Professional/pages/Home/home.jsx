@@ -1,10 +1,65 @@
 import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../ProfessionalHeader/Header";
+import { useState, useEffect } from "react";
 import "./home.css";
+import Axios from "axios";
 
 const Home = () => {
-  const userId = localStorage.getItem('userId');
+  const userId = localStorage.getItem('LuserId');
+
+  const [locationDetails,setLocationDetails] = useState([]);
+
+  useEffect(() => {
+    const getlocationdetails = async () => {
+      try {
+        const userId = localStorage.getItem('LuserId');
+        const result = await Axios.get(`http://localhost:8800/locationdetails/${userId}`)
+        // FOR DEBUGGING PURPOSES
+        console.log(result.data);
+        console.log(result.data[0].latitude);
+        console.log(result.data[0].longitude);
+        localStorage.setItem("pLat", result.data[0].latitude);
+        localStorage.setItem("pLong", result.data[0].longitude);
+        setLocationDetails(result.data);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    };
+    getlocationdetails();
+},[]);
+
+  //console.log(clientvote.tradiename);
+
+  function Showclientvote()
+  {
+      let clientvote = JSON.parse(localStorage.getItem('accepttradiedata'));
+
+      let locstoragekeydoesnotexists = clientvote == null;
+
+      if(locstoragekeydoesnotexists)
+      {
+        return null;
+      }
+      else 
+      {
+        let cvote = clientvote.tradiename;
+        let profname = localStorage.getItem('Tradie_name');
+        let cname = clientvote.client_name;
+      
+        console.log(cvote);
+        console.log(cname);
+        if(cvote == profname)
+        {
+          return  <h4 style={{"color": "red", "text-align": "left"}} >A client selected you: {cname}</h4>
+        }
+      }
+  };
+
+  
+  
+
   return (
     <div className="home-prof">
     {/* Div for whole Page Above ^ */}
@@ -14,7 +69,6 @@ const Home = () => {
     
     {/*Welcome Client - Tittle */}
       <h1 className="WelcomePro">Welcome, Professional</h1>
-      <p>You are logged in, your user ID is: {userId}</p>
       
     {/* About us - Table*/}
      <table className="aboutusTablePro">
@@ -111,8 +165,10 @@ const Home = () => {
             </table>
         </tr>
       </table>
-
-
+      <br/>
+      <br/>
+      <br/>
+      <Showclientvote/> 
 
 
       {/* Footer  */}

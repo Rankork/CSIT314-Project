@@ -1,10 +1,67 @@
 import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../ClientHeader/Header";
+import { useState, useEffect } from "react";
 import "./home.css";
+import Axios from "axios";
+import { Link } from "react-router-dom";
 
 const Home = () => {
-  const userId = localStorage.getItem('userId');
+  const [locationDetails,setLocationDetails] = useState([]);
+
+    useEffect(() => {
+      const getlocationdetails = async () => {
+        try {
+          const userId = localStorage.getItem('LuserId');
+          const result = await Axios.get(`http://localhost:8800/locationdetails/${userId}`)
+          // FOR DEBUGGING PURPOSES
+          console.log(result.data);
+          console.log(result.data[0].latitude);
+          console.log(result.data[0].longitude);
+          localStorage.setItem("cLat", result.data[0].latitude);
+          localStorage.setItem("cLong", result.data[0].longitude);
+          setLocationDetails(result.data);
+        }
+        catch (err) {
+          console.log(err);
+        }
+      };
+      getlocationdetails();
+  },[]);
+
+  //console.log(localStorage.getItem('userId'));
+  console.log(locationDetails);
+ //console.log(clientvote.tradiename);
+  
+  function Showpendingpayment()
+  {
+
+    let acceptedservreq = JSON.parse(localStorage.getItem('acceptedservreq'));
+
+    let locstoragekeydoesnotexists = acceptedservreq == null;
+
+    if(locstoragekeydoesnotexists)
+    {
+       return null;
+    }
+    else
+    {
+      let sreqclient = acceptedservreq.client;
+      let clientname = localStorage.getItem('Client_name');
+      console.log(clientname);
+
+      if(sreqclient == clientname)
+      {
+         return <h4 style={{"text-align": "left"}}><Link style={{"color": "red", "textDecoration": "none"}} to={"/client/payment"}>Service Payment Pending</Link></h4>
+      }
+      else
+      {
+         return null;
+      }
+    }  
+
+  };
+  
 
   return (
     <div className="home-client">
@@ -136,6 +193,10 @@ const Home = () => {
           </td>
         </tr>
     </table>
+    <br/>
+    <br/>
+    <br/>
+   <Showpendingpayment/> 
 
 
   {/* React Footer Call*/}
