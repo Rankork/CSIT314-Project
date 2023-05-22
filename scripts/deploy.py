@@ -12,7 +12,10 @@ if __name__ == '__main__':
     load_data_script = "./scripts/load_data.py"
     build_image_command = ["docker", "compose", "build"]
     compose_up_command = ["docker", "compose", "up", "-d"]
-
+    
+    print(f"[*] Installing python packages")
+    subprocess.run(["python3", "-m", "pip", "install", "-r", "./requirements.txt"])
+    
     for name in image_names:
         command = copy.deepcopy(build_image_command)
         command.append(name)
