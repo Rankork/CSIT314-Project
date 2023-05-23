@@ -8,7 +8,10 @@ import "./Header.css";
 const Header = () => {
   const navigate = useNavigate();
   const handleUserLogout = (e) => {
-    localStorage.clear(); // clear associated value/variables associated to a login session
+    localStorage.removeItem('cLong'); // clear associated value/variables associated to a login session
+    localStorage.removeItem('cLat');
+    localStorage.removeItem('LuserId');
+    localStorage.removeItem('Client_name');
     try {
       fetch("http://localhost:3000/logout", {
         method: "GET",

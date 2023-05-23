@@ -2,16 +2,19 @@ import React from "react";
 import Header from "../ClientHeader/Header";
 import Footer from "../../../Components/Footer/Footer";
 import "./taskselection.css";
+import { useState, useEffect } from "react";
+import Axios from 'axios';
 
 /* 
   
 TODO: 
-    * Impliment logic to only query traides that are within 5km range of client location
+    * Impliment logic to only query traides that are within 50km range of client location
     * Replace avaliableTradies with SQL query  
 */
 
 //DUMMY DATA -> TODO: replace with SQL
-const avaliableTradies = [
+/*
+const availableTradies = [
   {
     name: "John Doe",
     location: "Prestons",
@@ -31,12 +34,44 @@ const avaliableTradies = [
     phone: "0497843879",
   },
 ];
-
-function submitTradie(trade) {
-  // Function to handle the tradie the client submitted
-}
+*/
 
 const TaskSelection = () => {
+  const [availableTradies,setavailableTradies] = useState([]);
+
+    useEffect(() => {
+      const getlocationdetails = async () => {
+        try {
+          const cLat = localStorage.getItem('cLat');
+          const cLong = localStorage.getItem('cLong');
+          const result = await Axios.get(`http://localhost:8800/professional?clat=${cLat}&clng=${cLong}`)
+          setavailableTradies(result.data);
+        }
+        catch (err) {
+          console.log(err);
+        }
+      };
+      getlocationdetails();
+  },[]);
+
+
+  //console.log(localStorage.getItem('cLat'));
+  //console.log(localStorage.getItem('cLong'));  
+  console.log(availableTradies);
+  // console.log(availableTradies[0].name);
+  // create local storage data for accepttradie
+  // mixture of tradie and client data (made persitent till professional login)
+
+  const handletradieSelect = (event, speciality) => {
+    const values = {
+      client_id: localStorage.getItem('LuserId'),
+      client_name: localStorage.getItem('Client_name'), 
+      tradiename : event.target.value,
+      tradiespecialty: speciality
+    };
+    localStorage.setItem('accepttradiedata', JSON.stringify(values));
+  }
+
   return (
     <div className="task-selection">
       <Header />
@@ -52,20 +87,17 @@ const TaskSelection = () => {
             <th>Accept</th>
           </tr>
           <tbody>
-            {avaliableTradies.map((tradie, pos) => (
+            {availableTradies.map((tradie, pos) => (
               <tr key={tradie.name}>
                 <td>{pos + 1}</td>
                 <td>{tradie.name}</td>
-                <td>{tradie.location}</td>
-                <td>{tradie.trade}</td>
-                <td>{tradie.phone}</td>
+                <td>{tradie.Suburb}</td>
+                <td>{tradie.pSpecialty}</td>
+                <td>{tradie.Phone_number}</td>
                 <td>
-                  <button
-                    className="select-tradie-button"
-                    onClick={() => submitTradie(tradie)}
-                  >
-                    &#9989;
-                  </button>
+                  <form>
+                    <input type="checkbox" id="acccept" name="accept" value={tradie.name} onChange={(event) => handletradieSelect(event, tradie.pSpecialty)}/> {/*Changed to checkbox*/}
+                  </form>
                 </td>
               </tr>
             ))}
@@ -74,19 +106,10 @@ const TaskSelection = () => {
 
         <div className="tradie-count">
           <h2>
-            Total number of respondents in area: {avaliableTradies.length}
+            Total number of respondents in area: {availableTradies.length}
           </h2>
         </div>
 
-        <div className="selection-NextPage-btn-container">
-          <form action="/client/payment">
-            <input
-              className="selection-NextPage-btn"
-              type="submit"
-              value="Next Page"
-            />
-          </form>
-        </div>
       </div>
       <Footer />
     </div>

@@ -1,54 +1,90 @@
 import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../pages/ClientHeader/Header";
+import ReactPDF from "react-to-print";
+import { useState, useEffect } from "react";
 import "./report.css";
+import Axios from "axios";
 
 const Report = () => {
+  const [rdetails,setrdetails] = useState([]);
+  const cref = React.useRef(); 
+
+  var arequest = JSON.parse(localStorage.getItem('acceptedservreq'));
+  var atradie = JSON.parse(localStorage.getItem('accepttradiedata'));
+
+  useEffect(() => {
+    const getlocationdetails = async () => {
+      try {
+        var arequest = JSON.parse(localStorage.getItem('acceptedservreq'));
+        let sid = arequest.reqid;      
+        const result = await Axios.get(`http://localhost:8800/clientreport?servreqid=${sid}}`)
+        console.log(result.data);
+        setrdetails(result.data);
+      }
+      catch (err) {
+        console.log(err);
+      }
+    };
+    getlocationdetails();
+},[]);
+
+  console.log(rdetails);
+
   return (
     <div className="client-report-page">
       <Header />
-      <div className="table-wrapper">
+      <div className="table-wrapper" ref={cref}>
         <div className="client-table">
           <table>
+           {rdetails.map((detail) => (
             <tbody>
+              <tr>
+                  <span className="table-title">Service Request ID:</span> 
+                  <span className="table-data">
+                      {arequest.reqid}
+                  </span>
+                </tr>
+                <br/>
+                <br/>
               <tr>
                 <span className="table-title">Client Number:</span>
                 <span className="table-data">
-                  #1234 {/*TODO: replace with SQL*/}
+                  {detail.Id}
                 </span>
               </tr>
               <tr>
                 <span className="table-title">Client Name:</span>
                 <span className="table-data">
-                  Joe Doe {/*TODO: replace with SQL*/}
+                   {detail.name}
                 </span>
               </tr>
               <tr>
                 <span className="table-title">Address:</span>
                 <span className="table-data">
-                  100 road, somewhere {/*TODO: replace with SQL*/}
+                   {detail.full_address}
                 </span>
               </tr>
               <tr>
                 <span className="table-title">Phone Number:</span>
                 <span className="table-data">
-                  041000000 Joe Doe {/*TODO: replace with SQL*/}
+                   {detail.Phone_number}
                 </span>
               </tr>
               <tr>
                 <span className="table-title">Task:</span>
                 <span className="table-data">
-                  Some task {/*TODO: replace with SQL*/}
+                   {detail.request}
                 </span>
               </tr>
               <tr>
                 <span className="table-title">Task Description:</span>
                 <span className="table-data">
-                  This is the description of the task, ect, ect, ect...{" "}
-                  {/*TODO: replace with SQL*/}
+                  {detail.request_desc}
                 </span>
               </tr>
             </tbody>
+           ))}
           </table>
         </div>
 
@@ -57,40 +93,21 @@ const Report = () => {
             <table>
               <tbody>
                 <tr>
-                  <span className="table-title">Professional Number:</span>
-                  <span className="table-data">
-                    #1234 {/*TODO: replace with SQL*/}
-                  </span>
-                </tr>
-                <tr>
                   <span className="table-title">Professional Name:</span>
                   <span className="table-data">
-                    Joe Doe {/*TODO: replace with SQL*/}
+                    {atradie.tradiename}
                   </span>
                 </tr>
                 <tr>
                   <span className="table-title">Trade:</span>
                   <span className="table-data">
-                    100 road, somewhere {/*TODO: replace with SQL*/}
-                  </span>
+                    {atradie.tradiespecialty}
+                  </span> 
                 </tr>
                 <tr>
-                  <span className="table-title">Phone Number:</span>
+                  <span className="table-title">Service Fee:</span>
                   <span className="table-data">
-                    041000000 Joe Doe {/*TODO: replace with SQL*/}
-                  </span>
-                </tr>
-                <tr>
-                  <span className="table-title">Fee:</span>
-                  <span className="table-data">
-                    Some task {/*TODO: replace with SQL*/}
-                  </span>
-                </tr>
-                <tr>
-                  <span className="table-title">Professional Notes:</span>
-                  <span className="table-data">
-                    This is the description of the task, ect, ect, ect...{" "}
-                    {/*TODO: replace with SQL*/}
+                    ${arequest.price}
                   </span>
                 </tr>
               </tbody>
@@ -99,10 +116,11 @@ const Report = () => {
         </div>
       </div>
 
-      <div className="print-btn">
-        <form action="">
-          <input className="print-btn" type="submit" value="Print" />
-        </form>
+      <div>
+      <ReactPDF
+          trigger={() => <button className="print-btn">Print</button>}
+          content={() => cref.current}
+      />
       </div>
       <Footer />
     </div>
