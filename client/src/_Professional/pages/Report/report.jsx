@@ -34,13 +34,12 @@ const Report = () => {
 
   console.log(rdetails);
 
-  /*
+  
   function ClearlocalStorage() {
     localStorage.removeItem('acceptedservreq');
     localStorage.removeItem('accepttradiedata');
     navigate("/professional");
   }
-  */
 
   return (
     <div className="professional-report-page">
@@ -137,11 +136,9 @@ const Report = () => {
               content={() => cref.current}
           />
       </div>
-      {/*
       <div>
          <button className="print-btn" onClick={ClearlocalStorage}>Finish</button>
       </div>
-          */}
       <Footer />
     </div>
   );
