@@ -14,15 +14,15 @@ console.log("ENV File: " + env_file.toString());
 // Load environment vars from .env into process environment
 dotenv.config({path: env_file});
 
-const app = Express()
-app.use(cors())
-app.use(Express.json())
+const CSIT314_Proj = Express()
+CSIT314_Proj.use(cors())
+CSIT314_Proj.use(Express.json())
 
 // Use body-parser middleware
-app.use(bodyparser.urlencoded({ extended: false }));
-app.use(bodyparser.json());
+CSIT314_Proj.use(bodyparser.urlencoded({ extended: false }));
+CSIT314_Proj.use(bodyparser.json());
 
-app.use(
+CSIT314_Proj.use(
     session({
       key: process.env.SESSION_KEY,
       secret: process.env.SESSION_SECRET,
@@ -47,37 +47,39 @@ const db = mysql.createConnection({
 
 // API requests
 // "/" is like root directory in linux
-app.get("/", (req, res) => { // request and response
+CSIT314_Proj.get("/", (req, res) => { // request and response
      res.json("Is this connecting to SQL server")
 })
 
 // Handle logout
-app.get("http://localhost:3000/logout", (req, res) => {
+CSIT314_Proj.get("http://localhost:3000/logout", (req, res) => {
     // Session destroy on logout
     req.session.destroy((err) => {
-      if (err) {
-        console.error("Fatal error occurred when destroying session", err);
-        return res.status(500).json({ success: false, message: "Logout failed" });
+      if (!err) {
+        return res.status(200).json({message: "Successful logout"});
       }
       else
       {
-        return res.status(200).json({ success: true, message: "Successful logout" });
+        console.error("Fatal error occurred when destroying session", err);
+        return res.status(500).json({message: "Logout failed"});
       }
     });
 });
 
-// ===== Client ========
-
+// ======== Client =========
 // points to users table (LOGIN functionality)
-app.post("/users", (req, res) => {
+// NOTE: for string/varchar use ''
+CSIT314_Proj.post("/users", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
-    db.query("SELECT * FROM users WHERE Email = ? AND Password = ?", [email, password], 
+    db.query(`SELECT * FROM users WHERE Email = '${email}' AND Password = '${password}'`,
         (err, result) => {
             if(err){
                 console.log(err);
-            }else{
-                if(result.length > 0){
+            }
+            else
+            {
+                if(result.length != 0){
                     res.status(200).send(result) // handle with OK HTTP status code 
                 }
                 else{
@@ -93,7 +95,7 @@ let seedVal = Math.floor(Math.random() * (999999999 - 1 + 1)) + 1;
 let range = seedrandom(seedVal);
 
 // Test insert (Register)
-app.post("/users/new", (req, res) => {
+CSIT314_Proj.post("/users/new", (req, res) => {
   const id = Math.floor(range() * (999999999 - 100000000 + 1)) + 100000000;
   const firstname = req.body.firstname;
   const lastname = req.body.lastname;
@@ -116,7 +118,7 @@ app.post("/users/new", (req, res) => {
 })
 
 // For payment and billing
-app.post("/moredetails", (req, res) => {
+CSIT314_Proj.post("/moredetails", (req, res) => {
     const cardNo = req.body.cardNo;
     console.log(req.body.membershipType); // Testing --> need to handle insertion into multiple tables for membership payment
     const memType = req.body.membershipType;
@@ -182,7 +184,7 @@ app.post("/moredetails", (req, res) => {
 
 
   // for service request tasks
-  app.post("/service_requests", (req, res) => {
+  CSIT314_Proj.post("/service_requests", (req, res) => {
         const task = req.body.task;
         const specialty = req.body.specialty;
         const task_desc = req.body.task_description;
@@ -203,21 +205,23 @@ app.post("/moredetails", (req, res) => {
 })
 
 // retrieve request by userId
-app.get("/servreq/:userId", (req,res) => {
+CSIT314_Proj.get("/servreq/:userId", (req,res) => {
     const userId = req.params.userId;
-    db.query(`SELECT sid, request, specialty FROM service_requests WHERE userid = ${userId}`,
-        (err, result) => {
+    let sqlquery = `SELECT sid, request, specialty FROM service_requests WHERE userid = ${userId}`;
+        db.query(sqlquery, (err, result) => {
             if(err){
                 console.log(err);
                 res.status(500).send({message: "Fatal error: SELECT error"});
-            }else{
+            }
+            else
+            {
                 res.status(200).send(result); // GET always need to pass data to frontend from backend
             }
         }
     )
 })
 
-app.get("/locationdetails/:userId",  (req,res) => { // ===== Both Client and Professional ========
+CSIT314_Proj.get("/locationdetails/:userId",  (req,res) => { // ===== Both Client and Professional ========
     const userId = req.params.userId;
     db.query(`SELECT 
     u.Id, 
@@ -240,7 +244,7 @@ app.get("/locationdetails/:userId",  (req,res) => { // ===== Both Client and Pro
 
 
 // retrieve professional for client
-app.get("/professional", (req,res) => {
+CSIT314_Proj.get("/professional", (req,res) => {
     // client lat and long here for calcuation (within 50 km radius)
     const clat = req.query.clat; // This is the clat=${cLat} for clat (query) not the variable name of const cLat
     const clng = req.query.clng;
@@ -271,8 +275,8 @@ app.get("/professional", (req,res) => {
                     console.log("lat for tradie", tLat);
                     console.log("long for tradie", tLng);
 
+                    // const checkdistancekm = distanceonsphere(clat,clng,tLat,tLng);
                     // calculate distance between 2 locations (lat and long)
-                    //const checkdistancekm = distanceonsphere(clat,clng,tLat,tLng);
 
                     const diffLat = (tLat * (Math.PI/180)) - (clat* (Math.PI/180));
                     const diffLon = (tLng * (Math.PI/180)) - (clng* (Math.PI/180));
@@ -289,7 +293,7 @@ app.get("/professional", (req,res) => {
 })
 
 // retrieve professional for client
-app.get("/servicerequests", (req,res) => {
+CSIT314_Proj.get("/servicerequests", (req,res) => {
     // client lat and long here for calcuation (within 50 km radius)
     const plat = req.query.plat; // This is the clat=${cLat} for clat (query) not the variable name of const cLat
     const plng = req.query.plng;
@@ -325,8 +329,9 @@ app.get("/servicerequests", (req,res) => {
                     console.log("lat for client", cLat);
                     console.log("long for client", cLng);
 
-                    // calculate distance between 2 locations (lat and long)
                     //const checkdistancekm = distanceonsphere(plat,plng,cLat,cLng);
+                    // calculate distance between 2 locations (lat and long)
+
                     const diffLat = (cLat * (Math.PI/180)) - (plat* (Math.PI/180));
                     const diffLon = (cLng * (Math.PI/180)) - (plng* (Math.PI/180));
                     const a = Math.sin(diffLat / 2) * Math.sin(diffLat / 2) + Math.cos(plat * (Math.PI/180)) * Math.cos(cLat * (Math.PI/180)) * Math.sin(diffLon/2) * Math.sin(diffLon/2);
@@ -343,7 +348,7 @@ app.get("/servicerequests", (req,res) => {
 
 
 // handle payment to tradie
-app.post("/tpayment", (req, res) => {
+CSIT314_Proj.post("/tpayment", (req, res) => {
     const cardNo = req.body.cardNo;
     const id = req.body.userId;
     const cardExp = req.body.cardexpiry;
@@ -363,7 +368,7 @@ app.post("/tpayment", (req, res) => {
 })
 
 // set price for service request (Tradie)
-app.post("/acceptservreq", (req, res) => {
+CSIT314_Proj.post("/acceptservreq", (req, res) => {
         const price = req.body.price;
         const servreq = req.body.acceptreq;
         db.query(`UPDATE service_requests SET price = ${price} WHERE request = '${servreq}'`,  // NOTE: string in '' or ""
@@ -380,7 +385,7 @@ app.post("/acceptservreq", (req, res) => {
 })
 
 // client rating
-app.post("/clientratestradie", (req, res) => {
+CSIT314_Proj.post("/clientratestradie", (req, res) => {
     const Feedback = req.body.feedback;
     const Rating = req.body.rating;
     const sid = req.body.sid;
@@ -398,7 +403,7 @@ app.post("/clientratestradie", (req, res) => {
 })
 
 // professional rating
-app.post("/tradieratesclient",  (req,res) => {
+CSIT314_Proj.post("/tradieratesclient",  (req,res) => {
     const Feedback = req.body.feedback;
     const Jobnotes = req.body.jobnotes;
     const Rating = req.body.rating;
@@ -421,7 +426,7 @@ app.post("/tradieratesclient",  (req,res) => {
 })
 
 // Client report
-app.get("/clientreport", (req,res) => {
+CSIT314_Proj.get("/clientreport", (req,res) => {
     const sid = req.query.servreqid;
         db.query(`SELECT 
         u.Id , 
@@ -449,7 +454,7 @@ app.get("/clientreport", (req,res) => {
 });
 
 // Professional report
-app.get("/professionalreport", (req,res) => {
+CSIT314_Proj.get("/professionalreport", (req,res) => {
     const sid = req.query.servreqid;
         db.query(`SELECT 
         u.Id , 
@@ -478,6 +483,6 @@ app.get("/professionalreport", (req,res) => {
         )
 });
 
-app.listen(process.env.BACKEND_PORT, () => {
+CSIT314_Proj.listen(process.env.BACKEND_PORT, () => {
     console.log("Backend listening on " + process.env.BACKEND_PORT) // NOTE: prints to console
 })
