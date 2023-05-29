@@ -52,7 +52,11 @@ const Home = () => {
         console.log(cname);
         if(cvote == profname)
         {
-          return  <h4 style={{"color": "red", "text-align": "left"}} >A client selected you: {cname}</h4>
+          return  <h4 style={{"color": "red", "text-align": "left"}}>A client selected you: {cname}</h4>
+        }
+        else
+        {
+          return null;
         }
       }
   };

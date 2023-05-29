@@ -12,13 +12,15 @@ import sys
 import requests
 import time
 
+from typing import Tuple
 from urllib.parse import quote
 
 EARTH_MEAN_RADIUS_KMS = 6371.009
 MIN_PYTHON = (3, 8)
 
+#def random_lat_long_radius(center: (float, float), radius: float) -> (float, float):
 
-def random_lat_long_radius(center: (float, float), radius: float) -> (float, float):
+def random_lat_long_radius(center: Tuple[float, float], radius: float) -> Tuple[float, float]:
     (latitude, longitude) = center
     distance_offset = secrets.SystemRandom().uniform(1.0, radius)
 
@@ -30,8 +32,8 @@ def random_lat_long_radius(center: (float, float), radius: float) -> (float, flo
 
 
 def generate_wollongong_address(faker):
-    backend_env = dotenv.dotenv_values("./env/backend.env")
-    with open("./data/wollongong_postcodes.json", "r") as f:
+    backend_env = dotenv.dotenv_values("D:\Coding Workspaces\DatabaseTest\env")
+    with open("D:\Coding Workspaces\DatabaseTest\data\wollongong_postcodes.json", "r") as f:
         wollongong_postcodes = json.load(f)
 
     GOOGLE_API_NEARBY_PLACES_URL = "https://maps.googleapis.com/maps/api/place/nearbysearch/json"
@@ -353,19 +355,19 @@ if __name__ == '__main__':
         }
         generated_payments.append(payment)
 
-    with open("./data/users.json", "w") as f:
+    with open("D:\Coding Workspaces\DatabaseTest\data\users.json", "w") as f:
         json.dump(generated_users, f, indent=4)
 
-    with open("./data/address.json", "w") as f:
+    with open("D:\Coding Workspaces\DatabaseTest\data\\address.json", "w") as f:
         json.dump(generated_client_addresses, f, indent=4)
 
-    with open("./data/membership.json", "w") as f:
+    with open("D:\Coding Workspaces\DatabaseTest\data\membership.json", "w") as f:
         json.dump(generated_memberships, f, indent=4)
 
-    with open("./data/service_requests.json", "w") as f:
+    with open("D:\Coding Workspaces\DatabaseTest\data\service_requests.json", "w") as f:
         json.dump(generated_service_requests, f, indent=4)
 
-    with open("./data/payment.json", "w") as f:
+    with open("D:\Coding Workspaces\DatabaseTest\data\payment.json", "w") as f:
         json.dump(generated_payments, f, indent=4)
 
     exit(0)

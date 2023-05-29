@@ -7,7 +7,9 @@ import "./Header.css";
 
 const Header = () => {
   const navigate = useNavigate();
+  
   const handleUserLogout = (e) => {
+    // clear associated value/variables associated to a login session
     localStorage.removeItem('Tradie_name');
     localStorage.removeItem('pLong'); 
     localStorage.removeItem('pLat');

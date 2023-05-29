@@ -9,12 +9,12 @@ if __name__ == '__main__':
         sys.exit("Python %s.%s or later is required.\n" % MIN_PYTHON)
 
     image_names = ["backend", "frontend"]
-    load_data_script = "./scripts/load_data.py"
+    load_data_script = "D:\Coding Workspaces\DatabaseTest\scripts\load_data.py"
     build_image_command = ["docker", "compose", "build"]
     compose_up_command = ["docker", "compose", "up", "-d"]
     
     print(f"[*] Installing python packages")
-    subprocess.run(["python3", "-m", "pip", "install", "-r", "./requirements.txt"])
+    subprocess.run(["python3", "-m", "pip", "install", "-r", "D:\Coding Workspaces\DatabaseTest\\requirements.txt"])
     
     for name in image_names:
         command = copy.deepcopy(build_image_command)

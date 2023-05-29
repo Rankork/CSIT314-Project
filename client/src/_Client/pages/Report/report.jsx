@@ -2,13 +2,13 @@ import React from "react";
 import Footer from "../../../Components/Footer/Footer";
 import Header from "../../pages/ClientHeader/Header";
 import ReactPDF from "react-to-print";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import "./report.css";
 import Axios from "axios";
 
 const Report = () => {
   const [rdetails,setrdetails] = useState([]);
-  const cref = React.useRef(); 
+  const creportcontent = useRef(); 
 
   var arequest = JSON.parse(localStorage.getItem('acceptedservreq'));
   var atradie = JSON.parse(localStorage.getItem('accepttradiedata'));
@@ -34,7 +34,7 @@ const Report = () => {
   return (
     <div className="client-report-page">
       <Header />
-      <div className="table-wrapper" ref={cref}>
+      <div className="table-wrapper" ref={creportcontent}>
         <div className="client-table">
           <table>
            {rdetails.map((detail) => (
@@ -119,7 +119,7 @@ const Report = () => {
       <div>
       <ReactPDF
           trigger={() => <button className="print-btn">Print</button>}
-          content={() => cref.current}
+          content={() => creportcontent.current}
       />
       </div>
       <Footer />

@@ -25,6 +25,7 @@ const Membership = () => {
 
     event.preventDefault(); 
   
+    // regex format for credit/debit card numbers
     const regexcard = /^[0-9]{16}$/;
     const regexcvc = /^[0-9]{3}$/;
 
@@ -42,6 +43,8 @@ const Membership = () => {
     else
     {
       // handle insert with axios
+      // Axios: GET --> get data from database, POST --> insert into database 
+      // The endpoint at frontend : /{name} must correspond to /{name} at backend
       Axios.post("http://localhost:8800/moredetails", {
         address: address,
         suburb: suburb,
@@ -62,6 +65,7 @@ const Membership = () => {
       });
     }
     
+    // clear form fields after submitted
     setaddress('');
     setsuburb('');
     setpostcode('');

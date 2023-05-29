@@ -104,14 +104,17 @@ if __name__ == '__main__':
 
     # If new tables are needed, they must have a cleanup entry added,
     # also a create table query must be generated and placed above
+    
+    # changed paths to fit windows 10 
+    # Ali --> Ubuntu Linux, Min --> Windows 10
 
     SLEEP_TIME = 0.5
-    DATA_DIR = "./data"
+    DATA_DIR = "D:\Coding Workspaces\DatabaseTest\data"
     JSON_POSTFIX = ".json"
     POSTCODES_POSTFIX = "postcodes.json"
 
     db_data = {}
-    backend_env = dotenv.dotenv_values("./env/backend.env")
+    backend_env = dotenv.dotenv_values("D:\Coding Workspaces\DatabaseTest\env\\backend.env")
     connection = mysql.connector.MySQLConnection()
 
     while not connection.is_connected():

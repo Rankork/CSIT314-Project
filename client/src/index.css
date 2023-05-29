@@ -6,6 +6,7 @@ body {
 }
 
 /* Global CSS variables */
+/* General styles for the website/system*/
 :root {
   min-height: 125vh; /* Page size */
   position: relative;

@@ -22,15 +22,18 @@ const Rating = () => {
   var arequest = JSON.parse(localStorage.getItem('acceptedservreq'));
   let sid = arequest.reqid;
 
-  const fillstarClick = (value) => {
+  function fillstarClick(value)
+  {
     setrating(value);
   };
 
-  const mouseoverPreview = (previewVal) => {
+  function mouseoverPreview(previewVal)
+  {
     setmouseoverVal(previewVal);
   };
 
-  const mouseexit = () => {
+  function mouseexit() 
+  {
     setmouseoverVal(undefined);
   };
 
@@ -88,10 +91,10 @@ const Rating = () => {
                     <FaStar
                       key={index}
                       size={24}
+                      color={(mouseoverVal || rating) > index ? fillstars.yellow : fillstars.grey}
                       onClick={() => fillstarClick(index + 1)}
                       onMouseOver={() => mouseoverPreview(index + 1)}
                       onMouseLeave={mouseexit}
-                      color={(mouseoverVal || rating) > index ? fillstars.yellow : fillstars.grey}
                     />
                   )
                 })}

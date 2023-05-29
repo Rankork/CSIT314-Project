@@ -10,7 +10,8 @@ const Header = () => {
   const navigate = useNavigate();
 
     const handleUserLogout = () => {
-      localStorage.removeItem('cLong'); // clear associated value/variables associated to a login session
+      // clear associated value/variables associated to a login session
+      localStorage.removeItem('cLong'); 
       localStorage.removeItem('cLat');
       localStorage.removeItem('LuserId');
       localStorage.removeItem('Client_name');
@@ -24,7 +25,7 @@ const Header = () => {
         console.error("Error on Logout", error);
       }
     };
-    // handleUserLogout --> Don't bug it out FFS
+    // handleUserLogout() --> Don't bug it out FFS
 
   return (
     <div className="header">
