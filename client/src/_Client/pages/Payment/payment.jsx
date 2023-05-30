@@ -10,6 +10,7 @@ const Payment = () => {
   const [cvc, setCVC] = useState("");
   const [cardexpiry, setCardExp] = useState("");
 
+  // Regex checking for correct format of credit/debit card length and cvc
   const regexcard = /^[0-9]{16}$/;
   const regexcvc = /^[0-9]{3}$/;
 

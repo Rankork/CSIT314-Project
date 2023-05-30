@@ -31,8 +31,10 @@ const Home = () => {
 
   //console.log(localStorage.getItem('userId'));
   console.log(locationDetails);
- //console.log(clientvote.tradiename);
+  //console.log(clientvote.tradiename);
   
+  // Dynamically/conditionally show html elements
+  // If professional accepted service request for this client, show , else do not show
   function Showpendingpayment()
   {
 

@@ -32,6 +32,8 @@ const Home = () => {
 
   //console.log(clientvote.tradiename);
 
+  // Dynamically/conditionally show html elements
+  // If client voted for this professional, show, else do not show
   function Showclientvote()
   {
       let clientvote = JSON.parse(localStorage.getItem('accepttradiedata'));

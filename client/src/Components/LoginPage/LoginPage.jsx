@@ -17,17 +17,6 @@ const LoginPage = () => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  // Handle "Enter" Key press
-  /*
-  function handleEnterKey(keyactionevent) {
-     if(keyactionevent.key == 'Enter')
-     {
-       keyactionevent.preventDefault();
-       handleSubmit(keyactionevent);
-     }
-  }
-  */
-
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -68,7 +57,7 @@ const LoginPage = () => {
                    design will be complex and backend queries will be complex. Making the
                    implementation more complex. There will be more data transferred through 
                    each function which negatively impacts performance of application and
-                   user convenience and experience
+                   user convenience and experience.
                 */
                 localStorage.setItem('Client_name', response.data[0].First_Name+" "+response.data[0].Last_Name)
                 localStorage.setItem('LuserId', response.data[0].Id)

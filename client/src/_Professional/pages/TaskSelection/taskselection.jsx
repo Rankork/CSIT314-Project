@@ -10,6 +10,7 @@ const TaskSelection = () => {
   const [availableservreq,setavailableservreq] = useState([]);
   const [price, setPrice] = useState("");
 
+  // Accept service request
   const handleacceptSubmit = (event, acceptreq, client, reqid) => {
      event.preventDefault(); 
      console.log(acceptreq);
@@ -39,6 +40,7 @@ const TaskSelection = () => {
         localStorage.setItem('acceptedservreq', JSON.stringify(data));
   };
 
+      // Get all service requests from within 50km radius of professional's location
       useEffect(() => {
         const getservreqdetails = async () => {
           try {

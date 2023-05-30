@@ -18,6 +18,7 @@ import ProfessionalTaskSelection from "./_Professional/pages/TaskSelection/tasks
 import ProfessionalRating from "./_Professional/pages/Rating/rating";
 import ProfessionalReport from "./_Professional/pages/Report/report";
 
+// This handles all the routing for webpages in the project
 const Routing = () => {
   return (
     <Router>

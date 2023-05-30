@@ -4,7 +4,7 @@ import Routing from "./Routing.js"; // TODO : fin routing
 const App = () => {
   return (
     <div>
-      <Routing />
+      <Routing /> 
     </div>
   );
 };

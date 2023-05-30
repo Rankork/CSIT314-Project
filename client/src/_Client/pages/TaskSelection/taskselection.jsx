@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import Axios from 'axios';
 
 /* 
-  
 TODO: 
     * Impliment logic to only query traides that are within 50km range of client location
     * Replace avaliableTradies with SQL query  
@@ -54,7 +53,7 @@ const TaskSelection = () => {
       getlocationdetails();
   },[]);
 
-
+  // ------------- FOR DEBUG PURPOSES -------------------
   //console.log(localStorage.getItem('cLat'));
   //console.log(localStorage.getItem('cLong'));  
   console.log(availableTradies);
@@ -63,7 +62,7 @@ const TaskSelection = () => {
   // mixture of tradie and client data (made persitent till professional login)
 
   const handletradieSelect = (event, speciality) => {
-    const values = {
+    var values = {
       client_id: localStorage.getItem('LuserId'),
       client_name: localStorage.getItem('Client_name'), 
       tradiename : event.target.value,

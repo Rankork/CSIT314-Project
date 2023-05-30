@@ -17,6 +17,7 @@ import bodyparser from "body-parser";
 import session from "express-session";
 import seedrandom from "seedrandom";
 
+// Read from .env files in env directory
 const env_file = path.join(process.cwd(), "../", "env/", "backend.env");
 console.log("ENV File: " + env_file.toString());
 
@@ -31,6 +32,7 @@ CSIT314_Proj.use(Express.json())
 CSIT314_Proj.use(bodyparser.urlencoded({ extended: false }));
 CSIT314_Proj.use(bodyparser.json());
 
+// Using sessions
 CSIT314_Proj.use(
     session({
       key: process.env.SESSION_KEY,

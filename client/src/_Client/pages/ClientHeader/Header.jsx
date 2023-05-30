@@ -25,7 +25,7 @@ const Header = () => {
         console.error("Error on Logout", error);
       }
     };
-    // handleUserLogout() --> Don't bug it out FFS
+    // handleUserLogout() --> Bug found: Don't bug it out 
 
   return (
     <div className="header">
